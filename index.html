@@ -32,7 +32,6 @@
             box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3); margin-bottom: 25px;
         }
 
-        /* Colorful Borders for Cards */
         .card { 
             background: var(--white); 
             border-radius: var(--radius); 
@@ -71,7 +70,6 @@
         }
         input:focus, select:focus { border-color: #667eea; background: #fff; }
 
-        /* Attractive Assign Button */
         .btn-assign { 
             background: var(--primary-gradient); 
             color: white; 
@@ -92,7 +90,6 @@
         }
         .btn-assign:active { transform: scale(0.98); }
 
-        /* Table Styling */
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { text-align: left; padding: 15px; background: #f1f4f8; font-size: 0.75rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; }
         td { padding: 15px; border-bottom: 1px solid #f1f2f6; font-size: 0.9rem; font-weight: 400; }
@@ -121,7 +118,6 @@
         .btn-clear { background: var(--danger-gradient); color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; }
         .flex-row { display: flex; gap: 12px; align-items: center; }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; text-align: center; }
             .form-grid { grid-template-columns: 1fr; }
@@ -150,47 +146,50 @@
             <div class="input-group">
                 <label>Select Area</label>
                 <select id="areaInput">
-                   <option value="">Select Area</option>
-                    <option value="Motijheel">Motijheel</option>
-                    <option value="Segunbagicha">Segunbagicha</option>
-                    <option value="Eskaton">Eskaton</option>
-                    <option value="Moghbazar">Moghbazar</option>
-                    <option value="Wari">Wari</option>
-                    <option value="RK Mission Road">RK Mission Road</option>
-                    <option value="Chawkbazar">Chawkbazar</option>
-                    <option value="Shantinagar">Shantinagar</option>
-                    <option value="SadarGhat">SadarGhat</option>
-                    <option value="Gulistan">Gulistan</option>
-                    <option value="Rajarbag">Rajarbag</option>
-                    <option value="Moulovibazar">Moulovibazar</option>
-                    <option value="Islampur">Islampur</option>
-                    <option value="Imamganj">Imamganj</option>
-                    <option value="Jatrabari">Jatrabari</option>
-                    <option value="Lalbagh">Lalbagh</option>
-                    <option value="SanirAkhra">SanirAkhra</option>
-                    <option value="Keraniganj">Keraniganj</option>
+                    <option value="">Select Area</option>
                     <option value="Aganagar">Aganagar</option>
-                    <option value="Jurain">Jurain</option>
-                    <option value="Dhalpur">Dhalpur</option>
-                    <option value="Ganderia">Ganderia</option>
-                    <option value="Kamlapur">Kamlapur</option>
-                    <option value="Tikatuli">Tikatuli</option>
-                    <option value="Bangshal">Bangshal</option>
-                    <option value="Ramna">Ramna</option>
-                    <option value="Mitford">Mitford</option>
-                    <option value="Shahjahanpur">Shahjahanpur</option>
-                    <option value="Matuail">Matuail</option>
-                    <option value="Shyampur">Shyampur</option>
-                    <option value="Donia">Donia</option>
                     <option value="Babubazar">Babubazar</option>
+                    <option value="Bangshal">Bangshal</option>
+                    <option value="Chawkbazar">Chawkbazar</option>
+                    <option value="Dhalpur">Dhalpur</option>
+                    <option value="Donia">Donia</option>
+                    <option value="Eskaton">Eskaton</option>
+                    <option value="Ganderia">Ganderia</option>
+                    <option value="Gulistan">Gulistan</option>
+                    <option value="Imamganj">Imamganj</option>
+                    <option value="Islampur">Islampur</option>
+                    <option value="Jatrabari">Jatrabari</option>
+                    <option value="Jurain">Jurain</option>
+                    <option value="Kakrail">Kakrail</option>
+                    <option value="Kamlapur">Kamlapur</option>
+                    <option value="Keraniganj">Keraniganj</option>
+                    <option value="Lalbagh">Lalbagh</option>
+                    <option value="Matuail">Matuail</option>
+                    <option value="Mitford">Mitford</option>
+                    <option value="Moghbazar">Moghbazar</option>
+                    <option value="Motijheel">Motijheel</option>
+                    <option value="Moulovibazar">Moulovibazar</option>
+                    <option value="Rajarbag">Rajarbag</option>
+                    <option value="Ramna">Ramna</option>
+                    <option value="RK Mission Road">RK Mission Road</option>
+                    <option value="SadarGhat">SadarGhat</option>
+                    <option value="SanirAkhra">SanirAkhra</option>
+                    <option value="Segunbagicha">Segunbagicha</option>
+                    <option value="Shahjahanpur">Shahjahanpur</option>
+                    <option value="Shantinagar">Shantinagar</option>
+                    <option value="Shyampur">Shyampur</option>
+                    <option value="Tikatuli">Tikatuli</option>
+                    <option value="Wari">Wari</option>
                 </select>
             </div>
             <div class="input-group">
                 <label>Field Staff</label>
                 <select id="personInput">
                     <option value="">Assign to...</option>
-                    <option value="Sumon">Sumon</option><option value="Alamin">Alamin</option>
-                    <option value="Nahid">Nahid</option><option value="Fahim">Fahim</option>
+                    <option value="Sumon">Sumon</option>
+                    <option value="Alamin">Alamin</option>
+                    <option value="Nahid">Nahid</option>
+                    <option value="Fahim">Fahim</option>
                 </select>
             </div>
             <button class="btn-assign" id="assignBtn" onclick="addTask()">Assign Now</button>
@@ -277,6 +276,7 @@
 
     async function markDone(id, btn) {
         const idx = ongoing.findIndex(t => t.id === id);
+        if (idx === -1) return;
         const doneTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         const task = {...ongoing[idx], doneTime, remarks: "Done"};
         btn.innerText = "...";
@@ -330,4 +330,3 @@
 </script>
 </body>
 </html>
-
