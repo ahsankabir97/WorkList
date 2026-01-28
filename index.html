@@ -57,6 +57,27 @@
             align-items: center; 
         }
 
+        /* --- Updated Iframe Wrapper to Hide Google Footer --- */
+        .sheet-wrapper {
+            width: 100%;
+            height: 250px; /* উচ্চতা কমিয়ে আনা হয়েছে যাতে নিচের টেক্সট কেটে যায় */
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid #edf2f7;
+            background: #fff;
+            position: relative;
+        }
+        
+        .sheet-wrapper iframe {
+            width: 100%;
+            height: 310px; /* মূল ফ্রেম একটু বড় রাখা হয়েছে */
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        /* --------------------------------------------------- */
+
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end; }
         .input-group { display: flex; flex-direction: column; gap: 8px; }
         label { font-size: 0.85rem; font-weight: 600; color: #636e72; }
@@ -89,7 +110,6 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
             filter: brightness(1.1);
         }
-        .btn-assign:active { transform: scale(0.98); }
 
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { text-align: left; padding: 15px; background: #f1f4f8; font-size: 0.75rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; }
@@ -100,7 +120,6 @@
         .bg-nahid { background: #eb4d4b; } .bg-fahim { background: #5f27cd; }
 
         .status-working { color: #f5576c; font-weight: 700; animation: blink 1.5s infinite; }
-        .status-done { color: #00b09b; font-weight: 700; }
         @keyframes blink { 50% { opacity: 0.4; } }
 
         .btn-done { 
@@ -113,7 +132,6 @@
             font-weight: 600; 
             transition: 0.3s;
         }
-        .btn-done:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 176, 155, 0.3); }
 
         .search-box { padding: 8px 12px; border: 2px solid #00b09b; border-radius: 10px; font-size: 0.85rem; }
         .btn-clear { background: var(--danger-gradient); color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; }
@@ -135,16 +153,16 @@
 
     <div class="card" style="border-top: 6px solid #4834d4;">
         <div class="card-header" style="color: #4834d4;">📊 Task Live Summary</div>
-        <div style="overflow: hidden; border-radius: 10px; border: 1px solid #edf2f7; background: #fff;">
+        <div class="sheet-wrapper">
             <iframe 
-                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7" 
-                style="width: 100%; height: 280px; border: none;">
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7">
             </iframe>
         </div>
         <p style="font-size: 0.75rem; color: #a4b0be; margin-top: 10px; font-style: italic;">
-            * Auto-refreshing every 60s. Range fixed to A1:M7.
+            * Auto-refreshing every 60s.
         </p>
     </div>
+
     <div class="card card-new">
         <div class="card-header" style="color: #667eea;">🚀 Create New Assignment</div>
         <div class="form-grid">
@@ -163,35 +181,6 @@
                     <option value="Aganagar">Aganagar</option>
                     <option value="Babubazar">Babubazar</option>
                     <option value="Bangshal">Bangshal</option>
-                    <option value="Chawkbazar">Chawkbazar</option>
-                    <option value="Dhalpur">Dhalpur</option>
-                    <option value="Donia">Donia</option>
-                    <option value="Eskaton">Eskaton</option>
-                    <option value="Ganderia">Ganderia</option>
-                    <option value="Gulistan">Gulistan</option>
-                    <option value="Imamganj">Imamganj</option>
-                    <option value="Islampur">Islampur</option>
-                    <option value="Jatrabari">Jatrabari</option>
-                    <option value="Jurain">Jurain</option>
-                    <option value="Kakrail">Kakrail</option>
-                    <option value="Kamlapur">Kamlapur</option>
-                    <option value="Keraniganj">Keraniganj</option>
-                    <option value="Lalbagh">Lalbagh</option>
-                    <option value="Matuail">Matuail</option>
-                    <option value="Mitford">Mitford</option>
-                    <option value="Moghbazar">Moghbazar</option>
-                    <option value="Motijheel">Motijheel</option>
-                    <option value="Moulovibazar">Moulovibazar</option>
-                    <option value="Rajarbag">Rajarbag</option>
-                    <option value="Ramna">Ramna</option>
-                    <option value="RK Mission Road">RK Mission Road</option>
-                    <option value="SadarGhat">SadarGhat</option>
-                    <option value="SanirAkhra">SanirAkhra</option>
-                    <option value="Segunbagicha">Segunbagicha</option>
-                    <option value="Shahjahanpur">Shahjahanpur</option>
-                    <option value="Shantinagar">Shantinagar</option>
-                    <option value="Shyampur">Shyampur</option>
-                    <option value="Tikatuli">Tikatuli</option>
                     <option value="Wari">Wari</option>
                 </select>
             </div>
