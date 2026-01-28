@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60"> 
     <title>Work Assigned Dashboard | Modern UI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -132,6 +133,18 @@
         <div id="liveClock" style="font-weight: 600; font-size: 1.4rem; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 10px;"></div>
     </header>
 
+    <div class="card" style="border-top: 6px solid #4834d4;">
+        <div class="card-header" style="color: #4834d4;">📊 Task Live Summary</div>
+        <div style="overflow: hidden; border-radius: 10px; border: 1px solid #edf2f7; background: #fff;">
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:L7" 
+                style="width: 100%; height: 280px; border: none;">
+            </iframe>
+        </div>
+        <p style="font-size: 0.75rem; color: #a4b0be; margin-top: 10px; font-style: italic;">
+            * Auto-refreshing every 60s. Range fixed to A1:L7.
+        </p>
+    </div>
     <div class="card card-new">
         <div class="card-header" style="color: #667eea;">🚀 Create New Assignment</div>
         <div class="form-grid">
@@ -238,7 +251,10 @@
         document.getElementById('dateInput').valueAsDate = today;
         updateTicketPrefix();
         renderAll();
-        setInterval(() => { document.getElementById('liveClock').innerText = new Date().toLocaleTimeString(); }, 1000);
+        setInterval(() => { 
+            const clock = document.getElementById('liveClock');
+            if(clock) clock.innerText = new Date().toLocaleTimeString(); 
+        }, 1000);
     });
 
     function updateTicketPrefix() {
@@ -301,34 +317,36 @@
     function renderAll() {
         const searchVal = document.getElementById('searchDate').value;
         const onBody = document.querySelector('#ongoingTable tbody');
-        onBody.innerHTML = ongoing.map(t => `
-            <tr>
-                <td>${t.date}</td>
-                <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
-                <td><b style="color:#2d3436;">${t.ticket}</b></td>
-                <td>${t.area}</td>
-                <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
-                <td class="status-working">${t.remarks}</td>
-                <td><button class="btn-done" onclick="markDone(${t.id}, this)">Done</button></td>
-            </tr>
-        `).join('') || '<tr><td colspan="7" align="center" style="padding:40px; color:#b2bec3;">No Active Work Found</td></tr>';
+        if(onBody) {
+            onBody.innerHTML = ongoing.map(t => `
+                <tr>
+                    <td>${t.date}</td>
+                    <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
+                    <td><b style="color:#2d3436;">${t.ticket}</b></td>
+                    <td>${t.area}</td>
+                    <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
+                    <td class="status-working">${t.remarks}</td>
+                    <td><button class="btn-done" onclick="markDone(${t.id}, this)">Done</button></td>
+                </tr>
+            `).join('') || '<tr><td colspan="7" align="center" style="padding:40px; color:#b2bec3;">No Active Work Found</td></tr>';
+        }
 
         const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
         const comBody = document.querySelector('#completedTable tbody');
-        comBody.innerHTML = filtered.map(t => `
-            <tr>
-                <td>${t.date}</td>
-                <td>${t.startTime}</td>
-                <td style="color:#00b09b; font-weight:600;">${t.doneTime}</td>
-                <td><b>${t.ticket}</b></td>
-                <td>${t.area}</td>
-                <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
-                <td class="status-done">${t.remarks}</td>
-            </tr>
-        `).join('') || '<tr><td colspan="7" align="center" style="padding:40px; color:#b2bec3;">No Records Found</td></tr>';
+        if(comBody) {
+            comBody.innerHTML = filtered.map(t => `
+                <tr>
+                    <td>${t.date}</td>
+                    <td>${t.startTime}</td>
+                    <td style="color:#00b09b; font-weight:600;">${t.doneTime}</td>
+                    <td><b>${t.ticket}</b></td>
+                    <td>${t.area}</td>
+                    <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
+                    <td class="status-done">${t.remarks}</td>
+                </tr>
+            `).join('') || '<tr><td colspan="7" align="center" style="padding:40px; color:#b2bec3;">No Records Found</td></tr>';
+        }
     }
 </script>
 </body>
 </html>
-
-
