@@ -4,44 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="60"> 
-    <title>Work Assigned Dashboard | Modern UI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Work Assigned Dashboard | Link3 Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --success-gradient: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
             --danger-gradient: linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%);
+            --company-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             --bg-color: #f8f9fd;
             --white: #ffffff;
-            --radius: 16px;
+            --radius: 18px;
+            --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); padding: 20px; color: #2d3436; }
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--bg-color); 
+            padding: 20px; 
+            color: #2d3436;
+            background: linear-gradient(135deg, #f8f9fd 0%, #eef2f7 100%);
+            min-height: 100vh;
+        }
         .container { max-width: 1200px; margin: 0 auto; }
 
+        /* আকর্ষণীয় হেডার ডিজাইন */
         header {
             background: var(--primary-gradient);
-            padding: 15px 25px; border-radius: var(--radius); color: white;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3); margin-bottom: 25px;
+            padding: 20px 30px;
+            border-radius: var(--radius);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        header h1 {
-            font-size: 1.4rem;
-            letter-spacing: 1px;
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -10%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .header-left {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .company-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .company-name::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #38ef7d;
+            font-size: 1.2rem;
+        }
+
+        .header-right { 
+            text-align: right;
+            position: relative;
+            z-index: 2;
+        }
+
+        .datetime-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        #liveDate {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.3px;
             text-transform: uppercase;
         }
 
-        .header-info { text-align: right; }
-        #liveDate { font-size: 0.85rem; opacity: 1; font-weight: 700; }
-        #liveClock { font-weight: 700; font-size: .95rem; }
+        #liveClock {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            min-width: 150px;
+            text-align: center;
+        }
 
+        /* কার্ড ডিজাইন */
         .card { 
-            background: var(--white); border-radius: var(--radius); padding: 25px; 
-            margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-            position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);
+            background: var(--white); 
+            border-radius: var(--radius); 
+            padding: 28px; 
+            margin-bottom: 28px; 
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .card-new { border-top: 6px solid #667eea; }
@@ -49,74 +174,268 @@
         .card-completed { border-top: 6px solid #00b09b; }
 
         .sheet-wrapper {
-            width: 100%; height: 250px; overflow: hidden;
-            border-radius: 10px; border: 1px solid #edf2f7; background: #fff; position: relative;
-        }
-        .sheet-wrapper iframe { width: 100%; height: 310px; border: none; position: absolute; top: 0; left: 0; }
-
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end; }
-        .input-group { display: flex; flex-direction: column; gap: 8px; }
-        label { font-size: 0.85rem; font-weight: 600; color: #636e72; }
-        
-        /* Date input styling for better visibility */
-        input, select { 
-            padding: 12px; border: 2px solid #edf2f7; border-radius: 10px; 
-            outline: none; font-family: inherit; font-size: 0.85rem; 
+            width: 100%;
+            height: 270px;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
             background: #fff;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
-
-        .btn-assign { 
-            background: var(--primary-gradient); color: white; border: none; padding: 14px; 
-            border-radius: 10px; font-weight: 700; cursor: pointer; text-transform: uppercase; 
-        }
-
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { text-align: left; padding: 15px; background: #f1f4f8; font-size: 0.75rem; color: #7f8c8d; text-transform: uppercase; }
-        td { padding: 15px; border-bottom: 1px solid #f1f2f6; font-size: 0.85rem; }
-
-        .badge { padding: 6px 14px; border-radius: 30px; font-weight: 600; color: white; font-size: 0.7rem; }
-        .bg-sumon { background: #20bf6b; } .bg-alamin { background: #f0932b; }
-        .bg-nahid { background: #eb4d4b; } .bg-fahim { background: #5f27cd; }
-
-        .status-working { color: #f5576c; font-weight: 700; animation: blink 1.5s infinite; }
-        @keyframes blink { 50% { opacity: 0.4; } }
-
-        .btn-done { 
-            background: var(--success-gradient); color: white; border: none; padding: 6px 12px; 
-            border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.7rem; margin-top: 5px; display: block;
-        }
-
-        .search-box { padding: 8px 12px; border: 2px solid #00b09b; border-radius: 10px; font-size: 0.8rem; }
-        .btn-clear { background: var(--danger-gradient); color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 0.8rem; }
         
+        .sheet-wrapper iframe { 
+            width: 100%; 
+            height: 330px; 
+            border: none; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+        }
+
+        /* ফর্ম স্টাইল */
+        .form-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 18px; 
+            align-items: end; 
+        }
+        
+        .input-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+        }
+        
+        label { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            color: #4a5568; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        input, select { 
+            padding: 14px 16px; 
+            border: 2px solid #e2e8f0; 
+            border-radius: 10px; 
+            outline: none; 
+            font-family: 'Outfit', sans-serif; 
+            font-size: 0.9rem; 
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus { 
+            border-color: #667eea; 
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        /* বাটন স্টাইল */
+        .btn-assign { 
+            background: var(--primary-gradient); 
+            color: white; 
+            border: none; 
+            padding: 16px; 
+            border-radius: 10px; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            letter-spacing: 0.8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-assign:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.35);
+        }
+
+        .btn-assign:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* টেবিল স্টাইল */
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        
+        th { 
+            text-align: left; 
+            padding: 18px 20px; 
+            background: #f7fafc; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem; 
+            color: #4a5568; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        td { 
+            padding: 18px 20px; 
+            border-bottom: 1px solid #f1f2f6; 
+            font-size: 0.9rem; 
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* ব্যাজ স্টাইল */
+        .badge { 
+            padding: 8px 16px; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            color: white; 
+            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .bg-sumon { background: linear-gradient(135deg, #20bf6b 0%, #01baef 100%); } 
+        .bg-alamin { background: linear-gradient(135deg, #f0932b 0%, #f5576c 100%); }
+        .bg-nahid { background: linear-gradient(135deg, #eb4d4b 0%, #d446a6 100%); } 
+        .bg-fahim { background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%); }
+
+        /* স্ট্যাটাস এনিমেশন */
+        .status-working { 
+            color: #f5576c; 
+            font-weight: 700; 
+            animation: blink 1.5s infinite; 
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        @keyframes blink { 
+            50% { opacity: 0.4; } 
+        }
+
+        /* ডান বাটন */
+        .btn-done { 
+            background: var(--success-gradient); 
+            color: white; 
+            border: none; 
+            padding: 10px 18px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            margin-top: 8px; 
+            display: block;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 176, 155, 0.2);
+        }
+
+        .btn-done:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(0, 176, 155, 0.3);
+        }
+
+        /* সার্চ ও ক্লিয়ার বাটন */
+        .search-box { 
+            padding: 12px 16px; 
+            border: 2px solid #00b09b; 
+            border-radius: 10px; 
+            font-size: 0.85rem; 
+            font-family: 'Outfit', sans-serif;
+            background: white;
+        }
+        
+        .btn-clear { 
+            background: var(--danger-gradient); 
+            color: white; 
+            border: none; 
+            padding: 12px 22px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 95, 109, 0.2);
+        }
+
+        .btn-clear:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 95, 109, 0.3);
+        }
+
+        /* রেসপনসিভ ডিজাইন */
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 5px; text-align: center; padding: 10px; }
-            header h1 { font-size: 1rem; }
-            .header-info { text-align: center; }
-            .form-grid { grid-template-columns: 1fr; }
+            header { 
+                flex-direction: column; 
+                gap: 15px; 
+                text-align: center; 
+                padding: 20px; 
+            }
+            
+            .header-left, .header-right {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .datetime-container {
+                align-items: center;
+            }
+            
+            #liveClock {
+                min-width: 140px;
+            }
+            
+            .form-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            th, td {
+                padding: 12px 15px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- আকর্ষণীয় হেডার -->
     <header>
-        <h1>Work Dashboard</h1>
-        <div class="header-info">
-            <div id="liveDate"></div>
-            <div id="liveClock"></div>
+        <div class="header-left">
+            <div class="main-title">Work Dashboard</div>
+            <div class="company-name">Link3 Technologies Ltd</div>
+        </div>
+        <div class="header-right">
+            <div class="datetime-container">
+                <span id="liveDate"></span>
+                <span id="liveClock"></span>
+            </div>
         </div>
     </header>
 
+    <!-- লাইভ সামারি -->
     <div class="card" style="border-top: 6px solid #4834d4;">
-        <div style="font-weight:700; margin-bottom:15px; color:#4834d4; font-size: 0.9rem;">📊 TASK LIVE SUMMARY</div>
+        <div class="card-title" style="color:#4834d4;">📊 TASK LIVE SUMMARY</div>
         <div class="sheet-wrapper">
             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
         </div>
     </div>
 
+    <!-- নতুন টাস্ক এসাইনমেন্ট -->
     <div class="card card-new">
-        <div style="font-weight:700; margin-bottom:15px; color:#667eea; font-size: 0.9rem;">🚀 CREATE NEW ASSIGNMENT</div>
+        <div class="card-title" style="color:#667eea;">🚀 CREATE NEW ASSIGNMENT</div>
         <div class="form-grid">
             <div class="input-group">
                 <label>Date</label>
@@ -175,12 +494,13 @@
                     <option value="Fahim">Fahim</option>
                 </select>
             </div>
-            <button class="btn-assign" id="assignBtn" onclick="addTask()">Assign</button>
+            <button class="btn-assign" id="assignBtn" onclick="addTask()">Assign Task</button>
         </div>
     </div>
 
+    <!-- চলমান টাস্ক -->
     <div class="card card-ongoing">
-        <div style="font-weight:700; margin-bottom:15px; color:#f5576c; font-size: 0.9rem;">⏳ ONGOING TASKS (WORKING)</div>
+        <div class="card-title" style="color:#f5576c;">⏳ ONGOING TASKS (WORKING)</div>
         <div style="overflow-x:auto;">
             <table id="ongoingTable">
                 <thead>
@@ -191,12 +511,19 @@
         </div>
     </div>
 
+    <!-- সম্পন্ন টাস্ক -->
     <div class="card card-completed">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-            <span style="font-weight:700; color:#00b09b; font-size: 0.9rem;">✅ COMPLETED (TODAY)</span>
-            <div style="display:flex; gap:10px;">
-                <input type="date" id="searchDate" class="search-box" onchange="renderAll()">
-                <button class="btn-clear" onclick="clearCompleted()">Clear</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <div class="card-title" style="color:#00b09b;">✅ COMPLETED TASKS</div>
+            <div style="display:flex; gap:12px; align-items:center;">
+                <input type="date" id="searchDate" class="search-box" onchange="renderAll()" placeholder="Filter by date">
+                <button class="btn-clear" onclick="clearCompleted()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                    Clear
+                </button>
             </div>
         </div>
         <div style="overflow-x:auto;">
@@ -232,17 +559,24 @@
         updateTicketPrefix();
         renderAll();
         
+        // লাইভ ডেট-টাইম আপডেট
         setInterval(() => { 
             const now = new Date();
-            document.getElementById('liveClock').innerText = now.toLocaleTimeString(); 
-            document.getElementById('liveDate').innerText = now.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            document.getElementById('liveClock').innerText = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+            document.getElementById('liveDate').innerText = now.toLocaleDateString(undefined, { 
+                weekday: 'long', 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
         }, 1000);
     });
 
     function updateTicketPrefix() {
         const d = new Date(document.getElementById('dateInput').value);
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        document.getElementById('ticketInput').value = `L3-${d.getDate()}${months[d.getMonth()]}${d.getFullYear().toString().substr(-2)}-`;
+        const formattedDate = `${d.getDate()}${months[d.getMonth()]}${d.getFullYear().toString().substr(-2)}`;
+        document.getElementById('ticketInput').value = `L3-${formattedDate}-`;
     }
 
     async function addTask() {
@@ -253,31 +587,59 @@
             area: document.getElementById('areaInput').value,
             person: document.getElementById('personInput').value,
             startTime: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-            remarks: "Working", id: Date.now()
+            remarks: "Working", 
+            id: Date.now()
         };
-        if(!task.ticket || !task.area || !task.person) return alert("Fill all fields!");
-        btn.innerText = "Syncing..."; btn.disabled = true;
+        
+        if(!task.ticket || !task.area || !task.person) {
+            alert("Please fill all required fields!");
+            return;
+        }
+        
+        btn.innerText = "Syncing..."; 
+        btn.disabled = true;
+        
         try {
             await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
             ongoing.push(task);
-            saveData(); renderAll();
-        } catch(e) { alert("Failed!"); }
-        finally { btn.innerText = "Assign"; btn.disabled = false; }
+            saveData(); 
+            renderAll();
+            alert("Task assigned successfully!");
+        } catch(e) { 
+            alert("Failed to sync with server!");
+        } finally { 
+            btn.innerText = "Assign Task"; 
+            btn.disabled = false; 
+        }
     }
 
     async function markDone(id) {
         const idx = ongoing.findIndex(t => t.id === id);
         const doneTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         const task = {...ongoing[idx], doneTime, remarks: "Done"};
+        
         try {
             await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
             completed.unshift(ongoing.splice(idx, 1)[0]);
-            completed[0].doneTime = doneTime; completed[0].remarks = "Done";
-            saveData(); renderAll();
-        } catch(e) { alert("Error!"); }
+            completed[0].doneTime = doneTime; 
+            completed[0].remarks = "Done";
+            saveData(); 
+            renderAll();
+            alert("Task marked as completed!");
+        } catch(e) { 
+            alert("Error syncing with server!");
+        }
     }
 
-    function clearCompleted() { if(confirm("Clear list?")) { completed = []; saveData(); renderAll(); } }
+    function clearCompleted() { 
+        if(confirm("Are you sure you want to clear all completed tasks? This action cannot be undone.")) { 
+            completed = []; 
+            saveData(); 
+            renderAll();
+            alert("Completed tasks cleared successfully!");
+        } 
+    }
+
     function saveData() {
         localStorage.setItem('ongoing_v14', JSON.stringify(ongoing));
         localStorage.setItem('completed_v14', JSON.stringify(completed));
@@ -286,33 +648,34 @@
     function renderAll() {
         const searchVal = document.getElementById('searchDate').value;
         const onBody = document.querySelector('#ongoingTable tbody');
+        
         onBody.innerHTML = ongoing.map(t => `
             <tr>
-                <td><strong>${formatDateDisplay(t.date)}</strong> <button class="btn-done" onclick="markDone(${t.id})">DONE</button></td>
-                <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
-                <td><b>${t.ticket}</b></td>
+                <td>
+                    <strong>${formatDateDisplay(t.date)}</strong> 
+                    <button class="btn-done" onclick="markDone(${t.id})">✓ MARK DONE</button>
+                </td>
+                <td style="color:#764ba2; font-weight:600; font-family:'Montserrat';">${t.startTime}</td>
+                <td><b style="font-family:'Montserrat';">${t.ticket}</b></td>
                 <td>${t.area}</td>
                 <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
                 <td class="status-working">${t.remarks}</td>
             </tr>
-        `).join('') || '<tr><td colspan="6" align="center" style="padding:20px;">No Active Work</td></tr>';
+        `).join('') || '<tr><td colspan="6" align="center" style="padding:30px; color:#718096;">📭 No Active Tasks Found</td></tr>';
 
         const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
         document.querySelector('#completedTable tbody').innerHTML = filtered.map(t => `
             <tr>
                 <td><strong>${formatDateDisplay(t.date)}</strong></td>
                 <td>${t.startTime}</td>
-                <td style="color:#00b09b; font-weight:600;">${t.doneTime}</td>
-                <td><b>${t.ticket}</b></td>
+                <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">${t.doneTime}</td>
+                <td><b style="font-family:'Montserrat';">${t.ticket}</b></td>
                 <td>${t.area}</td>
                 <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
-                <td style="color:#00b09b; font-weight:700;">Done</td>
+                <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">✅ Done</td>
             </tr>
-        `).join('') || '<tr><td colspan="7" align="center" style="padding:20px;">No Records Found</td></tr>';
+        `).join('') || '<tr><td colspan="7" align="center" style="padding:30px; color:#718096;">📭 No Completed Tasks Found</td></tr>';
     }
 </script>
 </body>
 </html>
-
-
-
