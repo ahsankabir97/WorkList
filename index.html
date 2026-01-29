@@ -11,111 +11,68 @@
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --success-gradient: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
             --danger-gradient: linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%);
-            --ongoing-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --bg-color: #f8f9fd;
             --white: #ffffff;
             --radius: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background-color: var(--bg-color); 
-            padding: 20px;
-            color: #2d3436;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); padding: 20px; color: #2d3436; }
         .container { max-width: 1200px; margin: 0 auto; }
 
+        /* --- Header Adjusted for Smaller Title --- */
         header {
             background: var(--primary-gradient);
-            padding: 30px; border-radius: var(--radius); color: white;
+            padding: 15px 25px; border-radius: var(--radius); color: white;
             display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3); margin-bottom: 25px;
         }
 
+        header h1 {
+            font-size: 1.1rem; /* শিরোনামটি ছোট করা হয়েছে */
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .header-info { text-align: right; }
+        #liveDate { font-size: 0.75rem; opacity: 0.9; font-weight: 300; }
+        #liveClock { font-weight: 700; font-size: 1.1rem; }
+
+        /* --- Card Styles --- */
         .card { 
-            background: var(--white); 
-            border-radius: var(--radius); 
-            padding: 25px; 
-            margin-bottom: 25px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
+            background: var(--white); border-radius: var(--radius); padding: 25px; 
+            margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);
         }
 
         .card-new { border-top: 6px solid #667eea; }
         .card-ongoing { border-top: 6px solid #f5576c; }
         .card-completed { border-top: 6px solid #00b09b; }
 
-        .card-header { 
-            font-weight: 700; 
-            font-size: 1.1rem;
-            margin-bottom: 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        /* --- Updated Iframe Wrapper to Hide Google Footer --- */
         .sheet-wrapper {
-            width: 100%;
-            height: 250px; /* উচ্চতা কমিয়ে আনা হয়েছে যাতে নিচের টেক্সট কেটে যায় */
-            overflow: hidden;
-            border-radius: 10px;
-            border: 1px solid #edf2f7;
-            background: #fff;
-            position: relative;
+            width: 100%; height: 250px; overflow: hidden;
+            border-radius: 10px; border: 1px solid #edf2f7; background: #fff; position: relative;
         }
-        
         .sheet-wrapper iframe {
-            width: 100%;
-            height: 310px; /* মূল ফ্রেম একটু বড় রাখা হয়েছে */
-            border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
+            width: 100%; height: 310px; border: none; position: absolute; top: 0; left: 0;
         }
-        /* --------------------------------------------------- */
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end; }
         .input-group { display: flex; flex-direction: column; gap: 8px; }
         label { font-size: 0.85rem; font-weight: 600; color: #636e72; }
-        input, select { 
-            padding: 12px; 
-            border: 2px solid #edf2f7; 
-            border-radius: 10px; 
-            outline: none; 
-            font-family: inherit; 
-            transition: 0.3s;
-            background: #fdfdfd;
-        }
-        input:focus, select:focus { border-color: #667eea; background: #fff; }
+        input, select { padding: 12px; border: 2px solid #edf2f7; border-radius: 10px; outline: none; font-family: inherit; font-size: 0.85rem; }
 
         .btn-assign { 
-            background: var(--primary-gradient); 
-            color: white; 
-            border: none; 
-            padding: 14px; 
-            border-radius: 10px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            transition: all 0.4s; 
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        .btn-assign:hover { 
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-            filter: brightness(1.1);
+            background: var(--primary-gradient); color: white; border: none; padding: 14px; 
+            border-radius: 10px; font-weight: 700; cursor: pointer; text-transform: uppercase; 
         }
 
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { text-align: left; padding: 15px; background: #f1f4f8; font-size: 0.75rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; }
-        td { padding: 15px; border-bottom: 1px solid #f1f2f6; font-size: 0.9rem; font-weight: 400; }
+        th { text-align: left; padding: 15px; background: #f1f4f8; font-size: 0.75rem; color: #7f8c8d; text-transform: uppercase; }
+        td { padding: 15px; border-bottom: 1px solid #f1f2f6; font-size: 0.85rem; }
 
-        .badge { padding: 6px 14px; border-radius: 30px; font-weight: 600; color: white; font-size: 0.8rem; display: inline-block; }
+        .badge { padding: 6px 14px; border-radius: 30px; font-weight: 600; color: white; font-size: 0.7rem; }
         .bg-sumon { background: #20bf6b; } .bg-alamin { background: #f0932b; }
         .bg-nahid { background: #eb4d4b; } .bg-fahim { background: #5f27cd; }
 
@@ -123,22 +80,17 @@
         @keyframes blink { 50% { opacity: 0.4; } }
 
         .btn-done { 
-            background: var(--success-gradient); 
-            color: white; 
-            border: none; 
-            padding: 8px 18px; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-weight: 600; 
-            transition: 0.3s;
+            background: var(--success-gradient); color: white; border: none; padding: 6px 12px; 
+            border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.7rem; margin-top: 5px; display: block;
         }
 
-        .search-box { padding: 8px 12px; border: 2px solid #00b09b; border-radius: 10px; font-size: 0.85rem; }
-        .btn-clear { background: var(--danger-gradient); color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .flex-row { display: flex; gap: 12px; align-items: center; }
-
+        .search-box { padding: 8px 12px; border: 2px solid #00b09b; border-radius: 10px; font-size: 0.8rem; }
+        .btn-clear { background: var(--danger-gradient); color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 0.8rem; }
+        
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; text-align: center; }
+            header { flex-direction: column; gap: 5px; text-align: center; padding: 10px; }
+            header h1 { font-size: 1rem; }
+            .header-info { text-align: center; }
             .form-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -147,35 +99,33 @@
 
 <div class="container">
     <header>
-        <h1 style="letter-spacing: -1px;">WORK DASHBOARD</h1>
-        <div id="liveClock" style="font-weight: 600; font-size: 1.4rem; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 10px;"></div>
+        <h1>Work Dashboard</h1>
+        <div class="header-info">
+            <div id="liveDate"></div>
+            <div id="liveClock"></div>
+        </div>
     </header>
 
     <div class="card" style="border-top: 6px solid #4834d4;">
-        <div class="card-header" style="color: #4834d4;">📊 Task Live Summary</div>
+        <div style="font-weight:700; margin-bottom:15px; color:#4834d4; font-size: 0.9rem;">📊 TASK LIVE SUMMARY</div>
         <div class="sheet-wrapper">
-            <iframe 
-                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7">
-            </iframe>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
         </div>
-        <p style="font-size: 0.75rem; color: #a4b0be; margin-top: 10px; font-style: italic;">
-            * Auto-refreshing every 60s.
-        </p>
     </div>
 
     <div class="card card-new">
-        <div class="card-header" style="color: #667eea;">🚀 Create New Assignment</div>
+        <div style="font-weight:700; margin-bottom:15px; color:#667eea; font-size: 0.9rem;">🚀 CREATE NEW ASSIGNMENT</div>
         <div class="form-grid">
             <div class="input-group">
-                <label>Assignment Date</label>
+                <label>Date</label>
                 <input type="date" id="dateInput" onchange="updateTicketPrefix()">
             </div>
             <div class="input-group">
                 <label>Ticket ID</label>
                 <input type="text" id="ticketInput" placeholder="L3-DDMonYY-">
             </div>
-             <div class="input-group">
-                <label>Select Area</label>
+            <div class="input-group">
+                <label>Area</label>
                 <select id="areaInput">
                     <option value="">Select Area</option>
                     <option value="Aganagar">Aganagar</option>
@@ -211,11 +161,10 @@
                     <option value="Shyampur">Shyampur</option>
                     <option value="Tikatuli">Tikatuli</option>
                     <option value="Wari">Wari</option>
-                    <option value="Armanitola">Armanitola</option>
                 </select>
             </div>
             <div class="input-group">
-                <label>Field Staff</label>
+                <label>Staff</label>
                 <select id="personInput">
                     <option value="">Assign to...</option>
                     <option value="Sumon">Sumon</option>
@@ -224,16 +173,16 @@
                     <option value="Fahim">Fahim</option>
                 </select>
             </div>
-            <button class="btn-assign" id="assignBtn" onclick="addTask()">Assign Now</button>
+            <button class="btn-assign" id="assignBtn" onclick="addTask()">Assign</button>
         </div>
     </div>
 
     <div class="card card-ongoing">
-        <div class="card-header" style="color: #f5576c;">⏳ Ongoing Tasks (Working)</div>
+        <div style="font-weight:700; margin-bottom:15px; color:#f5576c; font-size: 0.9rem;">⏳ ONGOING TASKS (WORKING)</div>
         <div style="overflow-x:auto;">
             <table id="ongoingTable">
                 <thead>
-                    <tr><th>Date</th><th>Start</th><th>Ticket ID</th><th>Area</th><th>Staff</th><th>Status</th><th>Action</th></tr>
+                    <tr><th>Date & Action</th><th>Start</th><th>Ticket ID</th><th>Area</th><th>Staff</th><th>Status</th></tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -241,17 +190,17 @@
     </div>
 
     <div class="card card-completed">
-        <div class="card-header">
-            <span style="color: #00b09b;">✅ Completed (Done Today)</span>
-            <div class="flex-row">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+            <span style="font-weight:700; color:#00b09b; font-size: 0.9rem;">✅ COMPLETED (TODAY)</span>
+            <div style="display:flex; gap:10px;">
                 <input type="date" id="searchDate" class="search-box" onchange="renderAll()">
-                <button class="btn-clear" onclick="clearCompleted()">Clear List</button>
+                <button class="btn-clear" onclick="clearCompleted()">Clear</button>
             </div>
         </div>
         <div style="overflow-x:auto;">
             <table id="completedTable">
                 <thead>
-                    <tr><th>Date</th><th>Start</th><th>End</th><th>Ticket ID</th><th>Area</th><th>Staff</th><th>Status</th></tr>
+                    <tr><th>Date</th><th>Start</th><th>End</th><th>Ticket</th><th>Area</th><th>Staff</th><th>Status</th></tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -261,73 +210,60 @@
 
 <script>
     const G_URL = "https://script.google.com/macros/s/AKfycbz1ZE69wIfAem_gmCk5v-_2tH6ohSOdZoUkFpE1c0HRnQSqZxHfHVzTvVRAqjCcdB0/exec";
-    
     let ongoing = JSON.parse(localStorage.getItem('ongoing_v14')) || [];
     let completed = JSON.parse(localStorage.getItem('completed_v14')) || [];
 
     document.addEventListener('DOMContentLoaded', () => {
-        const today = new Date();
-        document.getElementById('dateInput').valueAsDate = today;
+        document.getElementById('dateInput').valueAsDate = new Date();
         updateTicketPrefix();
         renderAll();
+        
         setInterval(() => { 
-            const clock = document.getElementById('liveClock');
-            if(clock) clock.innerText = new Date().toLocaleTimeString(); 
+            const now = new Date();
+            document.getElementById('liveClock').innerText = now.toLocaleTimeString(); 
+            document.getElementById('liveDate').innerText = now.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
         }, 1000);
     });
 
     function updateTicketPrefix() {
-        const dateVal = document.getElementById('dateInput').value;
-        if(!dateVal) return;
-        const d = new Date(dateVal);
-        const day = d.getDate();
+        const d = new Date(document.getElementById('dateInput').value);
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const month = months[d.getMonth()];
-        const year = d.getFullYear().toString().substr(-2);
-        document.getElementById('ticketInput').value = `L3-${day}${month}${year}-`;
+        document.getElementById('ticketInput').value = `L3-${d.getDate()}${months[d.getMonth()]}${d.getFullYear().toString().substr(-2)}-`;
     }
 
     async function addTask() {
         const btn = document.getElementById('assignBtn');
-        const date = document.getElementById('dateInput').value;
-        const ticket = document.getElementById('ticketInput').value;
-        const area = document.getElementById('areaInput').value;
-        const person = document.getElementById('personInput').value;
-        const startTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-
-        if(!ticket || !area || !person) return alert("Please fill all fields!");
-
-        const task = { date, ticket, area, person, startTime, remarks: "Working", id: Date.now() };
+        const task = {
+            date: document.getElementById('dateInput').value,
+            ticket: document.getElementById('ticketInput').value,
+            area: document.getElementById('areaInput').value,
+            person: document.getElementById('personInput').value,
+            startTime: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+            remarks: "Working", id: Date.now()
+        };
+        if(!task.ticket || !task.area || !task.person) return alert("Fill all fields!");
         btn.innerText = "Syncing..."; btn.disabled = true;
-
         try {
             await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
             ongoing.push(task);
             saveData(); renderAll();
-            updateTicketPrefix();
-        } catch(e) { alert("Sync Failed!"); }
-        finally { btn.innerText = "Assign Now"; btn.disabled = false; }
+        } catch(e) { alert("Failed!"); }
+        finally { btn.innerText = "Assign"; btn.disabled = false; }
     }
 
-    async function markDone(id, btn) {
+    async function markDone(id) {
         const idx = ongoing.findIndex(t => t.id === id);
-        if (idx === -1) return;
         const doneTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         const task = {...ongoing[idx], doneTime, remarks: "Done"};
-        btn.innerText = "...";
         try {
             await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
-            const doneTask = ongoing.splice(idx, 1)[0];
-            doneTask.doneTime = doneTime; doneTask.remarks = "Done";
-            completed.unshift(doneTask);
+            completed.unshift(ongoing.splice(idx, 1)[0]);
+            completed[0].doneTime = doneTime; completed[0].remarks = "Done";
             saveData(); renderAll();
-        } catch(e) { alert("Error updating!"); }
+        } catch(e) { alert("Error!"); }
     }
 
-    function clearCompleted() {
-        if(confirm("Confirm clear list?")) { completed = []; saveData(); renderAll(); }
-    }
-
+    function clearCompleted() { if(confirm("Clear list?")) { completed = []; saveData(); renderAll(); } }
     function saveData() {
         localStorage.setItem('ongoing_v14', JSON.stringify(ongoing));
         localStorage.setItem('completed_v14', JSON.stringify(completed));
@@ -336,38 +272,30 @@
     function renderAll() {
         const searchVal = document.getElementById('searchDate').value;
         const onBody = document.querySelector('#ongoingTable tbody');
-        if(onBody) {
-            onBody.innerHTML = ongoing.map(t => `
-                <tr>
-                    <td>${t.date}</td>
-                    <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
-                    <td><b style="color:#2d3436;">${t.ticket}</b></td>
-                    <td>${t.area}</td>
-                    <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
-                    <td class="status-working">${t.remarks}</td>
-                    <td><button class="btn-done" onclick="markDone(${t.id}, this)">Done</button></td>
-                </tr>
-            `).join('') || '<tr><td colspan="7" align="center" style="padding:40px; color:#b2bec3;">No Active Work Found</td></tr>';
-        }
+        onBody.innerHTML = ongoing.map(t => `
+            <tr>
+                <td>${t.date} <button class="btn-done" onclick="markDone(${t.id})">DONE</button></td>
+                <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
+                <td><b>${t.ticket}</b></td>
+                <td>${t.area}</td>
+                <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
+                <td class="status-working">${t.remarks}</td>
+            </tr>
+        `).join('') || '<tr><td colspan="6" align="center" style="padding:20px;">No Active Work</td></tr>';
 
         const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
-        const comBody = document.querySelector('#completedTable tbody');
-        if(comBody) {
-            comBody.innerHTML = filtered.map(t => `
-                <tr>
-                    <td>${t.date}</td>
-                    <td>${t.startTime}</td>
-                    <td style="color:#00b09b; font-weight:600;">${t.doneTime}</td>
-                    <td><b>${t.ticket}</b></td>
-                    <td>${t.area}</td>
-                    <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
-                    <td class="status-done">${t.remarks}</td>
-                </tr>
-            `).join('') || '<tr><td colspan="7" align="center" style="padding:40px; color:#b2bec3;">No Records Found</td></tr>';
-        }
+        document.querySelector('#completedTable tbody').innerHTML = filtered.map(t => `
+            <tr>
+                <td>${t.date}</td>
+                <td>${t.startTime}</td>
+                <td style="color:#00b09b; font-weight:600;">${t.doneTime}</td>
+                <td><b>${t.ticket}</b></td>
+                <td>${t.area}</td>
+                <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
+                <td style="color:#00b09b; font-weight:700;">Done</td>
+            </tr>
+        `).join('') || '<tr><td colspan="7" align="center" style="padding:20px;">No Records Found</td></tr>';
     }
 </script>
 </body>
 </html>
-
-
