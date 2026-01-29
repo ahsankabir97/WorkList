@@ -20,7 +20,6 @@
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); padding: 20px; color: #2d3436; }
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* --- Header Adjusted for Smaller Title --- */
         header {
             background: var(--primary-gradient);
             padding: 15px 25px; border-radius: var(--radius); color: white;
@@ -29,17 +28,16 @@
         }
 
         header h1 {
-            font-size: 1.1rem; /* শিরোনামটি ছোট করা হয়েছে */
+            font-size: 1.1rem;
             letter-spacing: 1px;
             font-weight: 600;
             text-transform: uppercase;
         }
 
         .header-info { text-align: right; }
-        #liveDate { font-size: 0.75rem; opacity: 0.9; font-weight: 300; }
+        #liveDate { font-size: 0.85rem; opacity: 1; font-weight: 700; }
         #liveClock { font-weight: 700; font-size: 1.1rem; }
 
-        /* --- Card Styles --- */
         .card { 
             background: var(--white); border-radius: var(--radius); padding: 25px; 
             margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
@@ -54,14 +52,18 @@
             width: 100%; height: 250px; overflow: hidden;
             border-radius: 10px; border: 1px solid #edf2f7; background: #fff; position: relative;
         }
-        .sheet-wrapper iframe {
-            width: 100%; height: 310px; border: none; position: absolute; top: 0; left: 0;
-        }
+        .sheet-wrapper iframe { width: 100%; height: 310px; border: none; position: absolute; top: 0; left: 0; }
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end; }
         .input-group { display: flex; flex-direction: column; gap: 8px; }
         label { font-size: 0.85rem; font-weight: 600; color: #636e72; }
-        input, select { padding: 12px; border: 2px solid #edf2f7; border-radius: 10px; outline: none; font-family: inherit; font-size: 0.85rem; }
+        
+        /* Date input styling for better visibility */
+        input, select { 
+            padding: 12px; border: 2px solid #edf2f7; border-radius: 10px; 
+            outline: none; font-family: inherit; font-size: 0.85rem; 
+            background: #fff;
+        }
 
         .btn-assign { 
             background: var(--primary-gradient); color: white; border: none; padding: 14px; 
@@ -118,7 +120,7 @@
         <div class="form-grid">
             <div class="input-group">
                 <label>Date</label>
-                <input type="date" id="dateInput" onchange="updateTicketPrefix()">
+                <input type="date" id="dateInput" onchange="handleDateChange()">
             </div>
             <div class="input-group">
                 <label>Ticket ID</label>
@@ -213,6 +215,18 @@
     let ongoing = JSON.parse(localStorage.getItem('ongoing_v14')) || [];
     let completed = JSON.parse(localStorage.getItem('completed_v14')) || [];
 
+    // Helper to format date as DD-MM-YYYY
+    function formatDateDisplay(dateStr) {
+        if (!dateStr) return "";
+        const parts = dateStr.split('-');
+        if (parts.length !== 3) return dateStr;
+        return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+
+    function handleDateChange() {
+        updateTicketPrefix();
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dateInput').valueAsDate = new Date();
         updateTicketPrefix();
@@ -274,7 +288,7 @@
         const onBody = document.querySelector('#ongoingTable tbody');
         onBody.innerHTML = ongoing.map(t => `
             <tr>
-                <td>${t.date} <button class="btn-done" onclick="markDone(${t.id})">DONE</button></td>
+                <td><strong>${formatDateDisplay(t.date)}</strong> <button class="btn-done" onclick="markDone(${t.id})">DONE</button></td>
                 <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
                 <td><b>${t.ticket}</b></td>
                 <td>${t.area}</td>
@@ -286,7 +300,7 @@
         const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
         document.querySelector('#completedTable tbody').innerHTML = filtered.map(t => `
             <tr>
-                <td>${t.date}</td>
+                <td><strong>${formatDateDisplay(t.date)}</strong></td>
                 <td>${t.startTime}</td>
                 <td style="color:#00b09b; font-weight:600;">${t.doneTime}</td>
                 <td><b>${t.ticket}</b></td>
