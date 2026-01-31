@@ -6,8 +6,6 @@
     <meta http-equiv="refresh" content="60"> 
     <title>Work Assigned Dashboard | Link3 Technologies</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -37,7 +35,7 @@
             transform-origin: top center;
         }
 
-        /* আকর্ষণীয় হেডার ডিজাইন */
+        /* আকর্ষণীয় হেডার ডিজাইন - ছোট সাইজ */
         header {
             background: var(--primary-gradient);
             padding: 15px 25px;
@@ -75,7 +73,11 @@
             border-radius: 50%;
         }
 
-        .header-left { position: relative; z-index: 2; }
+        .header-left {
+            position: relative;
+            z-index: 2;
+        }
+
         .main-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
@@ -98,7 +100,8 @@
             color: #1725EB;
             position: relative;
             z-index: 1;
-            text-shadow: 0 1px 3px rgba(0, 51, 153, 0.3), 0 1px 0 rgba(255, 255, 255, 0.5);
+            text-shadow: 0 1px 3px rgba(0, 51, 153, 0.3), 
+                         0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         .header-right { 
@@ -141,6 +144,7 @@
             margin-bottom: 3px;
         }
 
+        /* কপিরাইট টেক্সট */
         .copyright-text {
             font-family: 'Poppins', sans-serif;
             font-size: 0.65rem;
@@ -174,7 +178,7 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px; /* আইকন এবং টেক্সটের মধ্যে ফাঁকা */
+            gap: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -224,14 +228,6 @@
             color: #4a5568; 
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        label i {
-            color: #667eea;
-            font-size: 0.8rem;
         }
         
         input, select { 
@@ -265,10 +261,8 @@
             letter-spacing: 0.8px;
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-assign:hover {
@@ -276,38 +270,284 @@
             box-shadow: 0 8px 22px rgba(102, 126, 234, 0.35);
         }
 
-        /* টেবিল ও অন্যান্য স্টাইল */
-        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-        th { text-align: left; padding: 14px 16px; background: #f7fafc; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: #4a5568; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #e2e8f0; }
-        td { padding: 14px 16px; border-bottom: 1px solid #f1f2f6; font-size: 0.8rem; font-family: 'Outfit', sans-serif; }
+        .btn-assign:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-        .badge { padding: 6px 12px; border-radius: 25px; font-weight: 600; color: white; font-size: 0.65rem; font-family: 'Montserrat', sans-serif; display: inline-block; text-transform: uppercase; letter-spacing: 0.3px; }
+        /* টেবিল স্টাইল */
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 12px; 
+        }
+        
+        th { 
+            text-align: left; 
+            padding: 14px 16px; 
+            background: #f7fafc; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem; 
+            color: #4a5568; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        td { 
+            padding: 14px 16px; 
+            border-bottom: 1px solid #f1f2f6; 
+            font-size: 0.8rem; 
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* ব্যাজ স্টাইল */
+        .badge { 
+            padding: 6px 12px; 
+            border-radius: 25px; 
+            font-weight: 600; 
+            color: white; 
+            font-size: 0.65rem;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
         .bg-sumon { background: linear-gradient(135deg, #20bf6b 0%, #01baef 100%); } 
         .bg-alamin { background: linear-gradient(135deg, #f0932b 0%, #f5576c 100%); }
         .bg-nahid { background: linear-gradient(135deg, #eb4d4b 0%, #d446a6 100%); } 
         .bg-fahim { background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%); }
 
-        .status-working { color: #f5576c; font-weight: 700; animation: blink 1.5s infinite; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; }
-        @keyframes blink { 50% { opacity: 0.4; } }
+        /* স্ট্যাটাস এনিমেশন */
+        .status-working { 
+            color: #f5576c; 
+            font-weight: 700; 
+            animation: blink 1.5s infinite; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+        
+        @keyframes blink { 
+            50% { opacity: 0.4; } 
+        }
 
-        .btn-done { background: var(--success-gradient); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.65rem; margin-top: 6px; display: block; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0, 176, 155, 0.2); }
-        .search-box { padding: 10px 12px; border: 2px solid #00b09b; border-radius: 8px; font-size: 0.75rem; font-family: 'Outfit', sans-serif; background: white; }
-        .btn-clear { background: var(--danger-gradient); color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(255, 95, 109, 0.2); display: flex; align-items: center; gap: 5px; }
+        /* ডান বাটন */
+        .btn-done { 
+            background: var(--success-gradient); 
+            color: white; 
+            border: none; 
+            padding: 8px 14px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            font-size: 0.65rem; 
+            margin-top: 6px; 
+            display: block;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 176, 155, 0.2);
+        }
+
+        .btn-done:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 12px rgba(0, 176, 155, 0.3);
+        }
+
+        /* সার্চ ও ক্লিয়ার বাটন */
+        .search-box { 
+            padding: 10px 12px; 
+            border: 2px solid #00b09b; 
+            border-radius: 8px; 
+            font-size: 0.75rem; 
+            font-family: 'Outfit', sans-serif;
+            background: white;
+        }
+        
+        .btn-clear { 
+            background: var(--danger-gradient); 
+            color: white; 
+            border: none; 
+            padding: 10px 18px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 95, 109, 0.2);
+        }
+
+        .btn-clear:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 95, 109, 0.3);
+        }
 
         /* পপআপ মেসেজ স্টাইল */
-        .popup-message { position: fixed; top: 20px; right: 20px; z-index: 10000; animation: slideInRight 0.5s ease forwards; max-width: 300px; }
-        .popup-content { background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 253, 0.95) 100%); backdrop-filter: blur(15px); border-radius: 12px; padding: 16px 20px; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); position: relative; overflow: hidden; }
-        .popup-content::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
-        .popup-success::before { background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%); }
-        @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes fadeOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(100%); visibility: hidden; } }
+        .popup-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            animation: slideInRight 0.5s ease forwards;
+            max-width: 300px;
+        }
 
-        @media (max-width: 768px) { .container { transform: scale(1); max-width: 100%; } header { flex-direction: column; text-align: center; } .datetime-container { align-items: center; } .form-grid { grid-template-columns: 1fr; } }
+        .popup-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 253, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .popup-success::before {
+            background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%);
+        }
+
+        .popup-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .popup-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #2d3748;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .popup-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #a0aec0;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .popup-close:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: #718096;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+                visibility: hidden;
+            }
+        }
+
+        /* রেসপনসিভ ডিজাইন */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                transform: scale(1);
+                max-width: 100%;
+            }
+            
+            header { 
+                flex-direction: column; 
+                gap: 12px; 
+                text-align: center; 
+                padding: 15px; 
+            }
+            
+            .header-left, .header-right {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .datetime-container {
+                align-items: center;
+            }
+            
+            #liveClock {
+                min-width: 110px;
+            }
+            
+            .form-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .card {
+                padding: 16px;
+            }
+            
+            th, td {
+                padding: 10px 12px;
+            }
+            
+            .popup-message {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- আকর্ষণীয় হেডার -->
     <header>
         <div class="header-left">
             <div class="main-title">Work Dashboard</div>
@@ -322,30 +562,28 @@
         </div>
     </header>
 
+    <!-- লাইভ সামারি -->
     <div class="card" style="border-top: 5px solid #4834d4;">
-        <div class="card-title" style="color:#4834d4;">
-            <i class="fas fa-chart-bar"></i> TASK LIVE SUMMARY
-        </div>
+        <div class="card-title" style="color:#4834d4;">📊 TASK LIVE SUMMARY</div>
         <div class="sheet-wrapper">
             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
         </div>
     </div>
 
+    <!-- নতুন টাস্ক এসাইনমেন্ট -->
     <div class="card card-new">
-        <div class="card-title" style="color:#667eea;">
-            <i class="fas fa-plus-circle"></i> CREATE NEW ASSIGNMENT
-        </div>
+        <div class="card-title" style="color:#667eea;">🚀 CREATE NEW ASSIGNMENT</div>
         <div class="form-grid">
             <div class="input-group">
-                <label><i class="fas fa-calendar-day"></i> Date</label>
+                <label>Date</label>
                 <input type="date" id="dateInput" onchange="handleDateChange()">
             </div>
             <div class="input-group">
-                <label><i class="fas fa-hashtag"></i> Ticket ID</label>
+                <label>Ticket ID</label>
                 <input type="text" id="ticketInput" placeholder="L3-DDMonYY-">
             </div>
             <div class="input-group">
-                <label><i class="fas fa-map-marker-alt"></i> Area</label>
+                <label>Area</label>
                 <select id="areaInput">
                     <option value="">Select Area</option>
                     <option value="Aganagar">Aganagar</option>
@@ -388,7 +626,7 @@
                 </select>
             </div>
             <div class="input-group">
-                <label><i class="fas fa-user-tie"></i> Staff</label>
+                <label>Staff</label>
                 <select id="personInput">
                     <option value="">Assign to...</option>
                     <option value="Sumon">Sumon</option>
@@ -397,16 +635,13 @@
                     <option value="Fahim">Fahim</option>
                 </select>
             </div>
-            <button class="btn-assign" id="assignBtn" onclick="addTask()">
-                <i class="fas fa-paper-plane"></i> Assign Task
-            </button>
+            <button class="btn-assign" id="assignBtn" onclick="addTask()">Assign Task</button>
         </div>
     </div>
 
+    <!-- চলমান টাস্ক -->
     <div class="card card-ongoing">
-        <div class="card-title" style="color:#f5576c;">
-            <i class="fas fa-spinner fa-spin"></i> ONGOING TASKS (WORKING)
-        </div>
+        <div class="card-title" style="color:#f5576c;">⏳ ONGOING TASKS (WORKING)</div>
         <div style="overflow-x:auto;">
             <table id="ongoingTable">
                 <thead>
@@ -417,15 +652,18 @@
         </div>
     </div>
 
+    <!-- সম্পন্ন টাস্ক -->
     <div class="card card-completed">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <div class="card-title" style="color:#00b09b; margin-bottom: 0;">
-                <i class="fas fa-check-double"></i> COMPLETED TASKS
-            </div>
+            <div class="card-title" style="color:#00b09b;">✅ COMPLETED TASKS</div>
             <div style="display:flex; gap:10px; align-items:center;">
-                <input type="date" id="searchDate" class="search-box" onchange="renderAll()">
+                <input type="date" id="searchDate" class="search-box" onchange="renderAll()" placeholder="Filter by date">
                 <button class="btn-clear" onclick="clearCompleted()">
-                    <i class="fas fa-trash-alt"></i> Clear
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style="margin-right:4px;">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                    Clear
                 </button>
             </div>
         </div>
@@ -440,6 +678,7 @@
     </div>
 </div>
 
+<!-- পপআপ মেসেজ কন্টেইনার -->
 <div id="popupContainer"></div>
 
 <script>
@@ -447,45 +686,74 @@
     let ongoing = JSON.parse(localStorage.getItem('ongoing_v14')) || [];
     let completed = JSON.parse(localStorage.getItem('completed_v14')) || [];
 
+    // Helper to format date as DD-MM-YYYY
     function formatDateDisplay(dateStr) {
         if (!dateStr) return "";
         const parts = dateStr.split('-');
-        return parts.length !== 3 ? dateStr : `${parts[2]}-${parts[1]}-${parts[0]}`;
+        if (parts.length !== 3) return dateStr;
+        return `${parts[2]}-${parts[1]}-${parts[0]}`;
     }
 
-    function handleDateChange() { updateTicketPrefix(); }
+    function handleDateChange() {
+        updateTicketPrefix();
+    }
 
+    // পপআপ মেসেজ শো করার ফাংশন
     function showPopup(type, title, message) {
         const popupContainer = document.getElementById('popupContainer');
         const popupId = 'popup-' + Date.now();
+        
         const popup = document.createElement('div');
         popup.id = popupId;
         popup.className = 'popup-message';
-        const icon = type === 'success' ? '<i class="fas fa-check-circle" style="color:#00b09b; font-size:1.8rem;"></i>' : '<i class="fas fa-paper-plane" style="color:#667eea; font-size:1.8rem;"></i>';
+        
+        const icon = type === 'success' ? '✅' : '🚀';
+        
         popup.innerHTML = `
             <div class="popup-content ${type === 'success' ? 'popup-success' : ''}">
-                <button style="position:absolute; top:10px; right:10px; border:none; background:none; cursor:pointer; color:#a0aec0;" onclick="closePopup('${popupId}')">×</button>
-                <div style="margin-bottom:10px;">${icon}</div>
-                <div style="font-weight:700; font-size:0.9rem; color:#2d3748;">${title}</div>
-                <div style="font-size:0.8rem; color:#4a5568;">${message}</div>
-            </div>`;
+                <button class="popup-close" onclick="closePopup('${popupId}')">×</button>
+                <div class="popup-icon">${icon}</div>
+                <div class="popup-title">${title}</div>
+                <div class="popup-text">${message}</div>
+            </div>
+        `;
+        
         popupContainer.appendChild(popup);
-        setTimeout(() => closePopup(popupId), 5000);
+        
+        // ৫ সেকেন্ড পর অটোমেটিক বন্ধ
+        setTimeout(() => {
+            closePopup(popupId);
+        }, 5000);
     }
 
-    function closePopup(id) {
-        const p = document.getElementById(id);
-        if (p) { p.style.animation = 'fadeOut 0.5s ease forwards'; setTimeout(() => p.remove(), 500); }
+    // পপআপ বন্ধ করার ফাংশন
+    function closePopup(popupId) {
+        const popup = document.getElementById(popupId);
+        if (popup) {
+            popup.style.animation = 'fadeOut 0.5s ease forwards';
+            setTimeout(() => {
+                if (popup && popup.parentNode) {
+                    popup.parentNode.removeChild(popup);
+                }
+            }, 500);
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dateInput').valueAsDate = new Date();
         updateTicketPrefix();
         renderAll();
+        
+        // লাইভ ডেট-টাইম আপডেট
         setInterval(() => { 
             const now = new Date();
             document.getElementById('liveClock').innerText = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-            document.getElementById('liveDate').innerText = now.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            document.getElementById('liveDate').innerText = now.toLocaleDateString(undefined, { 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
         }, 1000);
     });
 
@@ -504,57 +772,100 @@
             area: document.getElementById('areaInput').value,
             person: document.getElementById('personInput').value,
             startTime: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-            remarks: "Working", id: Date.now()
+            remarks: "Working", 
+            id: Date.now()
         };
-        if(!task.ticket || !task.area || !task.person) { alert("Please fill all required fields!"); return; }
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...'; btn.disabled = true;
+        
+        if(!task.ticket || !task.area || !task.person) {
+            alert("Please fill all required fields!");
+            return;
+        }
+        
+        btn.innerText = "Syncing..."; 
+        btn.disabled = true;
+        
         try {
             await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
-            ongoing.push(task); saveData(); renderAll();
-            showPopup('assign', 'Task Assigned', `${task.ticket} assigned to ${task.person}`);
-        } catch(e) { alert("Sync failed!"); }
-        finally { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Assign Task'; btn.disabled = false; }
+            ongoing.push(task);
+            saveData(); 
+            renderAll();
+            
+            // টাস্ক এসাইন করা হলে পপআপ মেসেজ শো করা
+            showPopup('assign', 'Task Assigned', `${task.ticket} assigned to ${task.person} for ${task.area} area`);
+            
+        } catch(e) { 
+            alert("Failed to sync with server!");
+        } finally { 
+            btn.innerText = "Assign Task"; 
+            btn.disabled = false; 
+        }
     }
 
     async function markDone(id) {
         const idx = ongoing.findIndex(t => t.id === id);
         const doneTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         const task = {...ongoing[idx], doneTime, remarks: "Done"};
+        
         try {
             await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
             completed.unshift(ongoing.splice(idx, 1)[0]);
-            completed[0].doneTime = doneTime; completed[0].remarks = "Done";
-            saveData(); renderAll();
-            showPopup('success', 'Task Completed', `${task.ticket} done at ${doneTime}`);
-        } catch(e) { alert("Sync failed!"); }
+            completed[0].doneTime = doneTime; 
+            completed[0].remarks = "Done";
+            saveData(); 
+            renderAll();
+            
+            // টাস্ক কমপ্লিট করা হলে পপআপ মেসেজ শো করা
+            showPopup('success', 'Task Completed', `${task.ticket} completed by ${task.person} at ${doneTime}`);
+            
+        } catch(e) { 
+            alert("Error syncing with server!");
+        }
     }
 
-    function clearCompleted() { if(confirm("Clear all?")) { completed = []; saveData(); renderAll(); } }
-    function saveData() { localStorage.setItem('ongoing_v14', JSON.stringify(ongoing)); localStorage.setItem('completed_v14', JSON.stringify(completed)); }
+    function clearCompleted() { 
+        if(confirm("Are you sure you want to clear all completed tasks? This action cannot be undone.")) { 
+            completed = []; 
+            saveData(); 
+            renderAll();
+            alert("Completed tasks cleared successfully!");
+        } 
+    }
+
+    function saveData() {
+        localStorage.setItem('ongoing_v14', JSON.stringify(ongoing));
+        localStorage.setItem('completed_v14', JSON.stringify(completed));
+    }
 
     function renderAll() {
         const searchVal = document.getElementById('searchDate').value;
-        document.querySelector('#ongoingTable tbody').innerHTML = ongoing.map(t => `
+        const onBody = document.querySelector('#ongoingTable tbody');
+        
+        onBody.innerHTML = ongoing.map(t => `
             <tr>
-                <td><strong>${formatDateDisplay(t.date)}</strong><button class="btn-done" onclick="markDone(${t.id})">✓ MARK DONE</button></td>
-                <td style="color:#764ba2; font-weight:600;">${t.startTime}</td>
-                <td><b>${t.ticket}</b></td>
+                <td>
+                    <strong>${formatDateDisplay(t.date)}</strong> 
+                    <button class="btn-done" onclick="markDone(${t.id})">✓ MARK DONE</button>
+                </td>
+                <td style="color:#764ba2; font-weight:600; font-family:'Montserrat';">${t.startTime}</td>
+                <td><b style="font-family:'Montserrat';">${t.ticket}</b></td>
                 <td>${t.area}</td>
                 <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
                 <td class="status-working">${t.remarks}</td>
-            </tr>`).join('') || '<tr><td colspan="6" align="center">No Active Tasks</td></tr>';
+            </tr>
+        `).join('') || '<tr><td colspan="6" align="center" style="padding:25px; color:#718096; font-size:0.8rem;">📭 No Active Tasks Found</td></tr>';
 
         const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
         document.querySelector('#completedTable tbody').innerHTML = filtered.map(t => `
             <tr>
                 <td><strong>${formatDateDisplay(t.date)}</strong></td>
                 <td>${t.startTime}</td>
-                <td style="color:#00b09b; font-weight:700;">${t.doneTime}</td>
-                <td><b>${t.ticket}</b></td>
+                <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">${t.doneTime}</td>
+                <td><b style="font-family:'Montserrat';">${t.ticket}</b></td>
                 <td>${t.area}</td>
                 <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
-                <td style="color:#00b09b; font-weight:700;">✅ Done</td>
-            </tr>`).join('') || '<tr><td colspan="7" align="center">No Completed Tasks</td></tr>';
+                <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">✅ Done</td>
+            </tr>
+        `).join('') || '<tr><td colspan="7" align="center" style="padding:25px; color:#718096; font-size:0.8rem;">📭 No Completed Tasks Found</td></tr>';
     }
 </script>
 </body>
