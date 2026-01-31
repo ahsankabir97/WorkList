@@ -14,32 +14,38 @@
             --company-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             --bg-color: #f8f9fd;
             --white: #ffffff;
-            --radius: 18px;
-            --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Outfit', sans-serif; 
             background-color: var(--bg-color); 
-            padding: 20px; 
+            padding: 15px; 
             color: #2d3436;
             background: linear-gradient(135deg, #f8f9fd 0%, #eef2f7 100%);
             min-height: 100vh;
+            font-size: 14px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            transform: scale(0.95);
+            transform-origin: top center;
+        }
 
-        /* আকর্ষণীয় হেডার ডিজাইন */
+        /* আকর্ষণীয় হেডার ডিজাইন - ছোট সাইজ */
         header {
             background: var(--primary-gradient);
-            padding: 20px 30px;
+            padding: 15px 25px;
             border-radius: var(--radius);
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--shadow);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -48,10 +54,10 @@
         header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 200px;
-            height: 200px;
+            top: -40%;
+            right: -15%;
+            width: 150px;
+            height: 150px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
@@ -59,10 +65,10 @@
         header::after {
             content: '';
             position: absolute;
-            bottom: -40%;
-            left: -10%;
-            width: 150px;
-            height: 150px;
+            bottom: -30%;
+            left: -8%;
+            width: 120px;
+            height: 120px;
             background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
         }
@@ -74,30 +80,28 @@
 
         .main-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #e6e6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .company-name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.95);
-            letter-spacing: 0.5px;
+            font-size: 1.00rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: #1725EB;
             position: relative;
-            padding-left: 32px;
-        }
-
-        .company-name::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: #38ef7d;
-            font-size: 1.2rem;
+            z-index: 1;
+            text-shadow: 0 1px 3px rgba(0, 51, 153, 0.3), 
+                         0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         .header-right { 
@@ -110,12 +114,12 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 5px;
+            gap: 4px;
         }
 
         #liveDate {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             letter-spacing: 0.3px;
@@ -125,26 +129,36 @@
         #liveClock {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 0.80rem;
             background: rgba(255, 255, 255, 0.15);
-            padding: 8px 18px;
-            border-radius: 12px;
+            padding: 6px 14px;
+            border-radius: 10px;
             backdrop-filter: blur(10px);
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             color: #ffffff;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            min-width: 150px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+            min-width: 120px;
             text-align: center;
+            margin-bottom: 3px;
+        }
+
+        /* কপিরাইট টেক্সট */
+        .copyright-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.65rem;
+            color: #17EB7D;
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
         /* কার্ড ডিজাইন */
         .card { 
             background: var(--white); 
             border-radius: var(--radius); 
-            padding: 28px; 
-            margin-bottom: 28px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
@@ -153,31 +167,31 @@
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
         }
 
         .card-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .card-new { border-top: 6px solid #667eea; }
-        .card-ongoing { border-top: 6px solid #f5576c; }
-        .card-completed { border-top: 6px solid #00b09b; }
+        .card-new { border-top: 5px solid #667eea; }
+        .card-ongoing { border-top: 5px solid #f5576c; }
+        .card-completed { border-top: 5px solid #00b09b; }
 
         .sheet-wrapper {
             width: 100%;
-            height: 270px;
+            height: 220px;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid #e2e8f0;
             background: #fff;
             position: relative;
@@ -186,7 +200,7 @@
         
         .sheet-wrapper iframe { 
             width: 100%; 
-            height: 330px; 
+            height: 280px; 
             border: none; 
             position: absolute; 
             top: 0; 
@@ -196,20 +210,20 @@
         /* ফর্ম স্টাইল */
         .form-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 18px; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px; 
             align-items: end; 
         }
         
         .input-group { 
             display: flex; 
             flex-direction: column; 
-            gap: 10px; 
+            gap: 8px; 
         }
         
         label { 
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem; 
+            font-size: 0.7rem; 
             font-weight: 700; 
             color: #4a5568; 
             text-transform: uppercase;
@@ -217,12 +231,12 @@
         }
         
         input, select { 
-            padding: 14px 16px; 
+            padding: 12px 14px; 
             border: 2px solid #e2e8f0; 
-            border-radius: 10px; 
+            border-radius: 8px; 
             outline: none; 
             font-family: 'Outfit', sans-serif; 
-            font-size: 0.9rem; 
+            font-size: 0.8rem; 
             background: #fff;
             transition: all 0.2s ease;
         }
@@ -237,10 +251,11 @@
             background: var(--primary-gradient); 
             color: white; 
             border: none; 
-            padding: 16px; 
-            border-radius: 10px; 
+            padding: 14px; 
+            border-radius: 8px; 
             font-family: 'Montserrat', sans-serif;
             font-weight: 700; 
+            font-size: 0.75rem;
             cursor: pointer; 
             text-transform: uppercase; 
             letter-spacing: 0.8px;
@@ -252,7 +267,7 @@
 
         .btn-assign:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.35);
+            box-shadow: 0 8px 22px rgba(102, 126, 234, 0.35);
         }
 
         .btn-assign:disabled {
@@ -265,15 +280,15 @@
         table { 
             width: 100%; 
             border-collapse: collapse; 
-            margin-top: 15px; 
+            margin-top: 12px; 
         }
         
         th { 
             text-align: left; 
-            padding: 18px 20px; 
+            padding: 14px 16px; 
             background: #f7fafc; 
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem; 
+            font-size: 0.65rem; 
             color: #4a5568; 
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -281,19 +296,19 @@
         }
         
         td { 
-            padding: 18px 20px; 
+            padding: 14px 16px; 
             border-bottom: 1px solid #f1f2f6; 
-            font-size: 0.9rem; 
+            font-size: 0.8rem; 
             font-family: 'Outfit', sans-serif;
         }
 
         /* ব্যাজ স্টাইল */
         .badge { 
-            padding: 8px 16px; 
-            border-radius: 30px; 
+            padding: 6px 12px; 
+            border-radius: 25px; 
             font-weight: 600; 
             color: white; 
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-family: 'Montserrat', sans-serif;
             display: inline-block;
             text-transform: uppercase;
@@ -311,6 +326,7 @@
             font-weight: 700; 
             animation: blink 1.5s infinite; 
             font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
         }
         
         @keyframes blink { 
@@ -322,31 +338,31 @@
             background: var(--success-gradient); 
             color: white; 
             border: none; 
-            padding: 10px 18px; 
-            border-radius: 8px; 
+            padding: 8px 14px; 
+            border-radius: 6px; 
             cursor: pointer; 
             font-family: 'Montserrat', sans-serif;
             font-weight: 700; 
-            font-size: 0.75rem; 
-            margin-top: 8px; 
+            font-size: 0.65rem; 
+            margin-top: 6px; 
             display: block;
             transition: all 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(0, 176, 155, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 176, 155, 0.2);
         }
 
         .btn-done:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0, 176, 155, 0.3);
+            box-shadow: 0 5px 12px rgba(0, 176, 155, 0.3);
         }
 
         /* সার্চ ও ক্লিয়ার বাটন */
         .search-box { 
-            padding: 12px 16px; 
+            padding: 10px 12px; 
             border: 2px solid #00b09b; 
-            border-radius: 10px; 
-            font-size: 0.85rem; 
+            border-radius: 8px; 
+            font-size: 0.75rem; 
             font-family: 'Outfit', sans-serif;
             background: white;
         }
@@ -355,30 +371,143 @@
             background: var(--danger-gradient); 
             color: white; 
             border: none; 
-            padding: 12px 22px; 
-            border-radius: 10px; 
+            padding: 10px 18px; 
+            border-radius: 8px; 
             cursor: pointer; 
             font-family: 'Montserrat', sans-serif;
             font-weight: 700; 
-            font-size: 0.85rem; 
+            font-size: 0.75rem; 
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 95, 109, 0.2);
+            box-shadow: 0 4px 12px rgba(255, 95, 109, 0.2);
         }
 
         .btn-clear:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 95, 109, 0.3);
+            box-shadow: 0 6px 16px rgba(255, 95, 109, 0.3);
+        }
+
+        /* পপআপ মেসেজ স্টাইল */
+        .popup-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            animation: slideInRight 0.5s ease forwards;
+            max-width: 300px;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 253, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .popup-success::before {
+            background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%);
+        }
+
+        .popup-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .popup-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #2d3748;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .popup-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #a0aec0;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .popup-close:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: #718096;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+                visibility: hidden;
+            }
         }
 
         /* রেসপনসিভ ডিজাইন */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                transform: scale(1);
+                max-width: 100%;
+            }
+            
             header { 
                 flex-direction: column; 
-                gap: 15px; 
+                gap: 12px; 
                 text-align: center; 
-                padding: 20px; 
+                padding: 15px; 
             }
             
             .header-left, .header-right {
@@ -391,7 +520,7 @@
             }
             
             #liveClock {
-                min-width: 140px;
+                min-width: 110px;
             }
             
             .form-grid { 
@@ -399,11 +528,18 @@
             }
             
             .card {
-                padding: 20px;
+                padding: 16px;
             }
             
             th, td {
-                padding: 12px 15px;
+                padding: 10px 12px;
+            }
+            
+            .popup-message {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
             }
         }
     </style>
@@ -421,12 +557,13 @@
             <div class="datetime-container">
                 <span id="liveDate"></span>
                 <span id="liveClock"></span>
+                <div class="copyright-text">© Ahsanul Kabir</div>
             </div>
         </div>
     </header>
 
     <!-- লাইভ সামারি -->
-    <div class="card" style="border-top: 6px solid #4834d4;">
+    <div class="card" style="border-top: 5px solid #4834d4;">
         <div class="card-title" style="color:#4834d4;">📊 TASK LIVE SUMMARY</div>
         <div class="sheet-wrapper">
             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
@@ -517,12 +654,12 @@
 
     <!-- সম্পন্ন টাস্ক -->
     <div class="card card-completed">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
             <div class="card-title" style="color:#00b09b;">✅ COMPLETED TASKS</div>
-            <div style="display:flex; gap:12px; align-items:center;">
+            <div style="display:flex; gap:10px; align-items:center;">
                 <input type="date" id="searchDate" class="search-box" onchange="renderAll()" placeholder="Filter by date">
                 <button class="btn-clear" onclick="clearCompleted()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style="margin-right:4px;">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
@@ -541,6 +678,9 @@
     </div>
 </div>
 
+<!-- পপআপ মেসেজ কন্টেইনার -->
+<div id="popupContainer"></div>
+
 <script>
     const G_URL = "https://script.google.com/macros/s/AKfycbz1ZE69wIfAem_gmCk5v-_2tH6ohSOdZoUkFpE1c0HRnQSqZxHfHVzTvVRAqjCcdB0/exec";
     let ongoing = JSON.parse(localStorage.getItem('ongoing_v14')) || [];
@@ -558,6 +698,47 @@
         updateTicketPrefix();
     }
 
+    // পপআপ মেসেজ শো করার ফাংশন
+    function showPopup(type, title, message) {
+        const popupContainer = document.getElementById('popupContainer');
+        const popupId = 'popup-' + Date.now();
+        
+        const popup = document.createElement('div');
+        popup.id = popupId;
+        popup.className = 'popup-message';
+        
+        const icon = type === 'success' ? '✅' : '🚀';
+        
+        popup.innerHTML = `
+            <div class="popup-content ${type === 'success' ? 'popup-success' : ''}">
+                <button class="popup-close" onclick="closePopup('${popupId}')">×</button>
+                <div class="popup-icon">${icon}</div>
+                <div class="popup-title">${title}</div>
+                <div class="popup-text">${message}</div>
+            </div>
+        `;
+        
+        popupContainer.appendChild(popup);
+        
+        // ৫ সেকেন্ড পর অটোমেটিক বন্ধ
+        setTimeout(() => {
+            closePopup(popupId);
+        }, 5000);
+    }
+
+    // পপআপ বন্ধ করার ফাংশন
+    function closePopup(popupId) {
+        const popup = document.getElementById(popupId);
+        if (popup) {
+            popup.style.animation = 'fadeOut 0.5s ease forwards';
+            setTimeout(() => {
+                if (popup && popup.parentNode) {
+                    popup.parentNode.removeChild(popup);
+                }
+            }, 500);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dateInput').valueAsDate = new Date();
         updateTicketPrefix();
@@ -568,7 +749,7 @@
             const now = new Date();
             document.getElementById('liveClock').innerText = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
             document.getElementById('liveDate').innerText = now.toLocaleDateString(undefined, { 
-                weekday: 'long', 
+                weekday: 'short', 
                 month: 'short', 
                 day: 'numeric', 
                 year: 'numeric' 
@@ -608,7 +789,10 @@
             ongoing.push(task);
             saveData(); 
             renderAll();
-            alert("Task assigned successfully!");
+            
+            // টাস্ক এসাইন করা হলে পপআপ মেসেজ শো করা
+            showPopup('assign', 'Task Assigned', `${task.ticket} assigned to ${task.person} for ${task.area} area`);
+            
         } catch(e) { 
             alert("Failed to sync with server!");
         } finally { 
@@ -629,7 +813,10 @@
             completed[0].remarks = "Done";
             saveData(); 
             renderAll();
-            alert("Task marked as completed!");
+            
+            // টাস্ক কমপ্লিট করা হলে পপআপ মেসেজ শো করা
+            showPopup('success', 'Task Completed', `${task.ticket} completed by ${task.person} at ${doneTime}`);
+            
         } catch(e) { 
             alert("Error syncing with server!");
         }
@@ -665,7 +852,7 @@
                 <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
                 <td class="status-working">${t.remarks}</td>
             </tr>
-        `).join('') || '<tr><td colspan="6" align="center" style="padding:30px; color:#718096;">📭 No Active Tasks Found</td></tr>';
+        `).join('') || '<tr><td colspan="6" align="center" style="padding:25px; color:#718096; font-size:0.8rem;">📭 No Active Tasks Found</td></tr>';
 
         const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
         document.querySelector('#completedTable tbody').innerHTML = filtered.map(t => `
@@ -678,9 +865,8 @@
                 <td><span class="badge bg-${t.person.toLowerCase()}">${t.person}</span></td>
                 <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">✅ Done</td>
             </tr>
-        `).join('') || '<tr><td colspan="7" align="center" style="padding:30px; color:#718096;">📭 No Completed Tasks Found</td></tr>';
+        `).join('') || '<tr><td colspan="7" align="center" style="padding:25px; color:#718096; font-size:0.8rem;">📭 No Completed Tasks Found</td></tr>';
     }
 </script>
 </body>
 </html>
-
