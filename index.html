@@ -40,10 +40,10 @@
             transform-origin: top center;
         }
 
-        /* আকর্ষণীয় হেডার ডিজাইন - ছোট সাইজ */
+        /* আকর্ষণীয় হেডার ডিজাইন */
         header {
             background: var(--primary-gradient);
-            padding: 15px 25px;
+            padding: 15px 25px; 
             border-radius: var(--radius);
             color: white;
             display: flex;
@@ -81,6 +81,17 @@
         .header-left {
             position: relative;
             z-index: 2;
+            display: flex; /* Logo এবং টেক্সট পাশাপাশি রাখার জন্য */
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* লোগো স্টাইল - ক্লিন ভার্সন (কোনো বক্স বা শ্যাডো নেই) */
+        .company-logo {
+            height: 60px; /* লোগোর হাইট ফিক্স করা হয়েছে */
+            width: auto;
+            display: block;
+            /* বক্স বা শ্যাডো রাখা হয়নি */
         }
 
         .main-title {
@@ -99,7 +110,7 @@
 
         .company-name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.00rem;
+            font-size: 0.95rem;
             font-weight: 700;
             letter-spacing: 0.3px;
             color: #40E0D0;
@@ -606,12 +617,17 @@
             
             header { 
                 flex-direction: column; 
-                gap: 12px; 
+                gap: 15px; 
                 text-align: center; 
                 padding: 15px; 
             }
+
+            .header-left {
+                flex-direction: column;
+                text-align: center;
+            }
             
-            .header-left, .header-right {
+            .header-right {
                 text-align: center;
                 width: 100%;
             }
@@ -662,8 +678,13 @@
     <!-- আকর্ষণীয় হেডার -->
     <header>
         <div class="header-left">
-            <div class="main-title">Work Dashboard</div>
-            <div class="company-name">Link3 Technologies Ltd</div>
+            <!-- লোগো যুক্ত করা হয়েছে (কোনো বক্স বা শ্যাডো ছাড়া) -->
+            <img src="https://z-cdn-media.chatglm.cn/files/93ab07ab-95be-4283-94f5-a91d63deca0a.png?auth_key=1870753510-e37ac183ce544227a72dc5abcbd73530-0-8f6eb8ecd2e78d9e2a1bc07e23c8edb0" alt="Link3 Logo" class="company-logo">
+            
+            <div>
+                <div class="main-title">Work Dashboard</div>
+                <div class="company-name">Link3 Technologies Ltd</div>
+            </div>
         </div>
         <div class="header-right">
             <div class="datetime-container">
@@ -693,9 +714,6 @@
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt icon-ticket"></i> Ticket ID</label>
                 <input type="text" id="ticketInput" placeholder="Enter Ticket ID">
-                <div class="ticket-hint">
-                    <i class="fas fa-info-circle"></i> Enter full Ticket ID (e.g., L3-10Feb24-001)
-                </div>
             </div>
             <div class="input-group">
                 <label><i class="fas fa-map-marker-alt icon-area"></i> Area</label>
@@ -1032,3 +1050,4 @@
 </script>
 </body>
 </html>
+```
