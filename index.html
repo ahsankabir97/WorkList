@@ -1,3 +1,8 @@
+আপনার কথা মতো কপিরাইট টেক্সটটি হেডার থেকে সরিয়ে **"Task Live Summary"** টেবিলের নিচে নিয়ে আসা হয়েছে। হোয়াইট ব্যাকগ্রাউন্ডের সাথে মানানসই করার জন্য টেক্সটের কালারটি পরিবর্তন করে নরম ধূসর (Grey) করা হয়েছে।
+
+নিচে সম্পূর্ণ আপডেটেড কোডটি দেওয়া হলো:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,17 +86,16 @@
         .header-left {
             position: relative;
             z-index: 2;
-            display: flex; /* Logo এবং টেক্সট পাশাপাশি রাখার জন্য */
+            display: flex; 
             align-items: center;
             gap: 15px;
         }
 
-        /* লোগো স্টাইল - ক্লিন ভার্সন (কোনো বক্স বা শ্যাডো নেই) */
+        /* লোগো স্টাইল */
         .company-logo {
-            height: 60px; /* লোগোর হাইট ফিক্স করা হয়েছে */
+            height: 60px; 
             width: auto;
             display: block;
-            /* বক্স বা শ্যাডো রাখা হয়নি */
         }
 
         .main-title {
@@ -157,16 +161,17 @@
             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
             min-width: 120px;
             text-align: center;
-            margin-bottom: 3px;
         }
 
-        /* কপিরাইট টেক্সট */
+        /* কপিরাইট টেক্সট - কার্ডের ভেতরের জন্য */
         .copyright-text {
             font-family: 'Poppins', sans-serif;
             font-size: 0.65rem;
-            color: #17EB7D;
+            color: #718096; /* হোয়াইট ব্যাকগ্রাউন্ডে দেখার জন্য কালার পরিবর্তন */
             font-weight: 500;
             letter-spacing: 0.3px;
+            text-align: right; /* ডান দিকে অ্যালাইন */
+            margin-top: 8px; /* টেবিল থেকে কিছু গ্যাপ */
         }
 
         /* কার্ড ডিজাইন */
@@ -631,13 +636,17 @@
                 text-align: center;
                 width: 100%;
             }
-            
+
             .datetime-container {
                 align-items: center;
             }
             
             #liveClock {
                 min-width: 110px;
+            }
+
+            .copyright-text {
+                text-align: center; /* মোবাইলে কপিরাইট সেন্টারে */
             }
             
             .form-grid { 
@@ -678,7 +687,7 @@
     <!-- আকর্ষণীয় হেডার -->
     <header>
         <div class="header-left">
-            <!-- লোগো যুক্ত করা হয়েছে (কোনো বক্স বা শ্যাডো ছাড়া) -->
+            <!-- লোগো যুক্ত করা হয়েছে -->
             <img src="https://z-cdn-media.chatglm.cn/files/93ab07ab-95be-4283-94f5-a91d63deca0a.png?auth_key=1870753510-e37ac183ce544227a72dc5abcbd73530-0-8f6eb8ecd2e78d9e2a1bc07e23c8edb0" alt="Link3 Logo" class="company-logo">
             
             <div>
@@ -690,7 +699,7 @@
             <div class="datetime-container">
                 <span id="liveDate"><i class="far fa-calendar-alt"></i> </span>
                 <span id="liveClock"><i class="far fa-clock"></i> </span>
-                <div class="copyright-text">© Ahsanul Kabir</div>
+                <!-- কপিরাইট এখান থেকে সরানো হয়েছে -->
             </div>
         </div>
     </header>
@@ -701,6 +710,8 @@
         <div class="sheet-wrapper">
             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
         </div>
+        <!-- কপিরাইট টেক্সট এখানে যুক্ত করা হয়েছে -->
+        <div class="copyright-text">© Ahsanul Kabir</div>
     </div>
 
     <!-- নতুন টাস্ক এসাইনমেন্ট -->
@@ -714,6 +725,9 @@
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt icon-ticket"></i> Ticket ID</label>
                 <input type="text" id="ticketInput" placeholder="Enter Ticket ID">
+                <div class="ticket-hint">
+                    <i class="fas fa-info-circle"></i> Enter full Ticket ID (e.g., L3-10Feb24-001)
+                </div>
             </div>
             <div class="input-group">
                 <label><i class="fas fa-map-marker-alt icon-area"></i> Area</label>
