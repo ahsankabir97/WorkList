@@ -1,3 +1,8 @@
+আপনার কথা মতো কপিরাইট টেক্সটটি হেডার থেকে সরিয়ে **"Task Live Summary"** টেবিলের নিচে নিয়ে আসা হয়েছে। হোয়াইট ব্যাকগ্রাউন্ডের সাথে মানানসই করার জন্য টেক্সটের কালারটি পরিবর্তন করে নরম ধূসর (Grey) করা হয়েছে।
+
+নিচে সম্পূর্ণ আপডেটেড কোডটি দেওয়া হলো:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,8 +93,8 @@
 
         /* লোগো স্টাইল */
         .company-logo {
-            height: 60px; 
-            width: 70px;
+            height: 55px; 
+            width: auto;
             display: block;
         }
 
@@ -720,6 +725,8 @@
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt icon-ticket"></i> Ticket ID</label>
                 <input type="text" id="ticketInput" placeholder="Enter Ticket ID">
+                <div class="ticket-hint">
+                    
                 </div>
             </div>
             <div class="input-group">
@@ -1058,6 +1065,3 @@
 </body>
 </html>
 ```
-
-
-
