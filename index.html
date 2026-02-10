@@ -445,6 +445,10 @@
             background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%);
         }
 
+        .popup-warning::before {
+            background: linear-gradient(90deg, #ffa726 0%, #ff9800 100%);
+        }
+
         .popup-icon {
             font-size: 1.8rem;
             margin-bottom: 10px;
@@ -743,10 +747,17 @@
         popup.id = popupId;
         popup.className = 'popup-message';
         
-        const icon = type === 'success' ? '✅' : '🚀';
+        let icon = '';
+        if (type === 'success') {
+            icon = '✅';
+        } else if (type === 'warning') {
+            icon = '⚠️';
+        } else {
+            icon = '🚀';
+        }
         
         popup.innerHTML = `
-            <div class="popup-content ${type === 'success' ? 'popup-success' : ''}">
+            <div class="popup-content ${type === 'success' ? 'popup-success' : ''} ${type === 'warning' ? 'popup-warning' : ''}">
                 <button class="popup-close" onclick="closePopup('${popupId}')">×</button>
                 <div class="popup-icon">${icon}</div>
                 <div class="popup-title">${title}</div>
@@ -814,6 +825,15 @@
         
         if(!task.ticket || !task.area || !task.person) {
             alert("Please fill all required fields!");
+            return;
+        }
+        
+        // নতুন কোড: ডুপ্লিকেট টিকেট চেক করুন
+        const allTickets = [...ongoing, ...completed];
+        const isDuplicate = allTickets.some(t => t.ticket === task.ticket);
+        
+        if(isDuplicate) {
+            showPopup('warning', 'Duplicate Ticket', `Ticket ID "${task.ticket}" already exists in ongoing or completed tasks!`);
             return;
         }
         
@@ -914,4 +934,3 @@
 </script>
 </body>
 </html>
-
