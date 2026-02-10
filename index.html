@@ -868,10 +868,9 @@
         const formattedDate = today.toISOString().split('T')[0];
         document.getElementById('dateInput').value = formattedDate;
         
-        // Set focus on ticket input and show hint
+        // Set focus on ticket input (NO popup message)
         setTimeout(() => {
             document.getElementById('ticketInput').focus();
-            showPopup('info', 'Enter Ticket ID', 'Please enter the full Ticket ID (e.g., L3-10Feb24-001)');
         }, 500);
         
         renderAll();
