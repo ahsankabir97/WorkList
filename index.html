@@ -18,6 +18,9 @@
             --white: #ffffff;
             --radius: 16px;
             --shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            --table-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            --table-row-hover: rgba(224, 231, 255, 0.5);
+            --table-header-bg: linear-gradient(135deg, #e6f0ff 0%, #e0e7ff 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -309,30 +312,66 @@
             transform: none;
         }
 
-        /* টেবিল স্টাইল */
+        /* টেবিল স্টাইল - ব্লুইশ ব্যাকগ্রাউন্ড */
         table { 
             width: 100%; 
             border-collapse: collapse; 
-            margin-top: 12px; 
+            margin-top: 12px;
+            background: var(--table-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(224, 231, 255, 0.5);
         }
         
         th { 
             text-align: left; 
             padding: 14px 16px; 
-            background: #f7fafc; 
+            background: var(--table-header-bg); 
             font-family: 'Montserrat', sans-serif;
             font-size: 0.65rem; 
             color: #4a5568; 
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+            position: relative;
+        }
+
+        th:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background: rgba(102, 126, 234, 0.2);
         }
         
         td { 
             padding: 14px 16px; 
-            border-bottom: 1px solid #f1f2f6; 
+            border-bottom: 1px solid rgba(224, 231, 255, 0.4); 
             font-size: 0.8rem; 
             font-family: 'Outfit', sans-serif;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.2s ease;
+        }
+
+        tr:hover td {
+            background: var(--table-row-hover);
+            transform: translateX(2px);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* টেবিলের জোড় সারির আলাদা ব্যাকগ্রাউন্ড */
+        tr:nth-child(even) td {
+            background: rgba(248, 250, 252, 0.9);
+        }
+
+        tr:nth-child(even):hover td {
+            background: var(--table-row-hover);
         }
 
         /* ব্যাজ স্টাইল */
@@ -350,6 +389,8 @@
             align-items: center;
             gap: 5px;
             width: fit-content;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .bg-sumon { background: linear-gradient(135deg, #20bf6b 0%, #01baef 100%); } 
@@ -367,6 +408,10 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            padding: 4px 10px;
+            background: rgba(245, 87, 108, 0.1);
+            border-radius: 6px;
+            width: fit-content;
         }
         
         @keyframes blink { 
@@ -393,6 +438,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-done:hover {
@@ -411,6 +457,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 176, 155, 0.1);
         }
         
         .btn-clear { 
@@ -430,6 +477,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-clear:hover {
