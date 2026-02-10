@@ -221,6 +221,7 @@
             display: flex; 
             flex-direction: column; 
             gap: 8px; 
+            position: relative;
         }
         
         label { 
@@ -246,6 +247,32 @@
         input:focus, select:focus { 
             border-color: #667eea; 
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        /* টিকেট আইডি হেল্প টেক্সট */
+        .ticket-hint {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            font-size: 0.65rem;
+            color: #718096;
+            margin-top: 4px;
+            padding: 4px 8px;
+            background: #f7fafc;
+            border-radius: 4px;
+            border-left: 3px solid #667eea;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .input-group:hover .ticket-hint,
+        #ticketInput:focus ~ .ticket-hint {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* বাটন স্টাইল */
@@ -613,11 +640,14 @@
         <div class="form-grid">
             <div class="input-group">
                 <label><i class="far fa-calendar-alt icon-calendar"></i> Date</label>
-                <input type="date" id="dateInput" onchange="handleDateChange()">
+                <input type="date" id="dateInput">
             </div>
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt icon-ticket"></i> Ticket ID</label>
-                <input type="text" id="ticketInput" placeholder="L3-DDMonYY-">
+                <input type="text" id="ticketInput" placeholder="Enter Ticket ID">
+                <div class="ticket-hint">
+                    <i class="fas fa-info-circle"></i> Enter full Ticket ID (e.g., L3-10Feb24-001)
+                </div>
             </div>
             <div class="input-group">
                 <label><i class="fas fa-map-marker-alt icon-area"></i> Area</label>
@@ -636,8 +666,8 @@
                     <option value="Gulistan">Gulistan</option>
                     <option value="Imamganj">Imamganj</option>
                     <option value="Islampur">Islampur</option>
-                    <option value="Islampur">Islampur</option>
                     <option value="Jatrabari">Jatrabari</option>
+		    <option value="Joypara">Joypara</option>
                     <option value="Jurain">Jurain</option>
                     <option value="Kakrail">Kakrail</option>
                     <option value="Kamlapur">Kamlapur</option>
@@ -655,7 +685,7 @@
                     <option value="Naya Paltan">Naya Paltan</option>
                     <option value="Rajarbag">Rajarbag</option>
                     <option value="Ramna">Ramna</option>
-                    <option value="RK Mission Road">RK Mission Road</option>
+                    <option value="RK Mission Road">RK Mission</option>
                     <option value="SadarGhat">SadarGhat</option>
                     <option value="SanirAkhra">SanirAkhra</option>
                     <option value="Segunbagicha">Segunbagicha</option>
@@ -664,8 +694,8 @@
                     <option value="Shyampur">Shyampur</option>
                     <option value="Siddheshwari">Siddheshwari</option>
                     <option value="Tikatuli">Tikatuli</option>
-                    <option value="Wari">Wari</option> 
-                </select>
+                    <option value="Wari">Wari</option>
+	</select>
             </div>
             <div class="input-group">
                 <label><i class="fas fa-user icon-person"></i> Staff</label>
@@ -734,10 +764,6 @@
         return `${parts[2]}-${parts[1]}-${parts[0]}`;
     }
 
-    function handleDateChange() {
-        updateTicketPrefix();
-    }
-
     // পপআপ মেসেজ শো করার ফাংশন
     function showPopup(type, title, message) {
         const popupContainer = document.getElementById('popupContainer');
@@ -752,6 +778,8 @@
             icon = '✅';
         } else if (type === 'warning') {
             icon = '⚠️';
+        } else if (type === 'info') {
+            icon = 'ℹ️';
         } else {
             icon = '🚀';
         }
@@ -787,8 +815,17 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('dateInput').valueAsDate = new Date();
-        updateTicketPrefix();
+        // Set today's date as default
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        document.getElementById('dateInput').value = formattedDate;
+        
+        // Set focus on ticket input and show hint
+        setTimeout(() => {
+            document.getElementById('ticketInput').focus();
+            showPopup('info', 'Enter Ticket ID', 'Please enter the full Ticket ID (e.g., L3-10Feb24-001)');
+        }, 500);
+        
         renderAll();
         
         // লাইভ ডেট-টাইম আপডেট
@@ -804,18 +841,21 @@
         }, 1000);
     });
 
-    function updateTicketPrefix() {
-        const d = new Date(document.getElementById('dateInput').value);
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const formattedDate = `${d.getDate()}${months[d.getMonth()]}${d.getFullYear().toString().substr(-2)}`;
-        document.getElementById('ticketInput').value = `L3-${formattedDate}-`;
-    }
-
     async function addTask() {
         const btn = document.getElementById('assignBtn');
+        const ticketInput = document.getElementById('ticketInput');
+        const ticketValue = ticketInput.value.trim();
+        
+        // Check if ticket ID is empty
+        if(!ticketValue) {
+            showPopup('warning', 'Ticket ID Required', 'Please enter a Ticket ID (e.g., L3-10Feb24-001)');
+            ticketInput.focus();
+            return;
+        }
+        
         const task = {
             date: document.getElementById('dateInput').value,
-            ticket: document.getElementById('ticketInput').value,
+            ticket: ticketValue,
             area: document.getElementById('areaInput').value,
             person: document.getElementById('personInput').value,
             startTime: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
@@ -823,17 +863,18 @@
             id: Date.now()
         };
         
-        if(!task.ticket || !task.area || !task.person) {
-            alert("Please fill all required fields!");
+        if(!task.area || !task.person) {
+            showPopup('warning', 'Missing Information', 'Please select both Area and Staff!');
             return;
         }
         
-        // নতুন কোড: ডুপ্লিকেট টিকেট চেক করুন
+        // ডুপ্লিকেট টিকেট চেক করুন
         const allTickets = [...ongoing, ...completed];
         const isDuplicate = allTickets.some(t => t.ticket === task.ticket);
         
         if(isDuplicate) {
             showPopup('warning', 'Duplicate Ticket', `Ticket ID "${task.ticket}" already exists in ongoing or completed tasks!`);
+            ticketInput.focus();
             return;
         }
         
@@ -846,11 +887,21 @@
             saveData(); 
             renderAll();
             
+            // Clear form
+            ticketInput.value = '';
+            document.getElementById('areaInput').value = '';
+            document.getElementById('personInput').value = '';
+            
             // টাস্ক এসাইন করা হলে পপআপ মেসেজ শো করা
-            showPopup('assign', 'Task Assigned', `${task.ticket} assigned to ${task.person} for ${task.area} area`);
+            showPopup('success', 'Task Assigned', `${task.ticket} assigned to ${task.person} for ${task.area} area`);
+            
+            // Focus back to ticket input for next entry
+            setTimeout(() => {
+                ticketInput.focus();
+            }, 300);
             
         } catch(e) { 
-            alert("Failed to sync with server!");
+            showPopup('warning', 'Sync Error', 'Failed to sync with server! Task saved locally.');
         } finally { 
             btn.innerHTML = '<i class="fas fa-paper-plane"></i> Assign Task'; 
             btn.disabled = false; 
@@ -874,7 +925,7 @@
             showPopup('success', 'Task Completed', `${task.ticket} completed by ${task.person} at ${doneTime}`);
             
         } catch(e) { 
-            alert("Error syncing with server!");
+            showPopup('warning', 'Sync Error', 'Error syncing with server! Task marked done locally.');
         }
     }
 
@@ -883,7 +934,7 @@
             completed = []; 
             saveData(); 
             renderAll();
-            alert("Completed tasks cleared successfully!");
+            showPopup('info', 'Tasks Cleared', 'All completed tasks have been cleared.');
         } 
     }
 
