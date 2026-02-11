@@ -265,32 +265,8 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
         }
 
-        /* টিকেট আইডি হেল্প টেক্সট */
-        .ticket-hint {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            font-size: 0.65rem;
-            color: #718096;
-            margin-top: 4px;
-            padding: 4px 8px;
-            background: #f7fafc;
-            border-radius: 4px;
-            border-left: 3px solid #667eea;
-            opacity: 0;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .input-group:hover .ticket-hint,
-        #ticketInput:focus ~ .ticket-hint {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        /* টিকেট আইডি হেল্প টেক্সট - REMOVED AS REQUESTED */
+        
         /* বাটন স্টাইল */
         .btn-assign { 
             background: var(--primary-gradient); 
@@ -684,8 +660,8 @@
     <!-- আকর্ষণীয় হেডার -->
     <header>
         <div class="header-left">
-            <!-- লোগো যুক্ত করা হয়েছে -->
-            <img src="https://z-cdn-media.chatglm.cn/files/93ab07ab-95be-4283-94f5-a91d63deca0a.png?auth_key=1870753510-e37ac183ce544227a72dc5abcbd73530-0-8f6eb8ecd2e78d9e2a1bc07e23c8edb0" alt="Link3 Logo" class="company-logo">
+            <!-- লোগো আপডেট করা হয়েছে -->
+            <img src="https://z-cdn-media.chatglm.cn/files/acb00912-a376-4782-b313-80248fd0f8ed.png?auth_key=1870834439-20e10467e7154c949132c6f76f1a421e-0-71eb8030909b232371f257313e5acc97" alt="Link3 Logo" class="company-logo">
             
             <div>
                 <div class="main-title">Work Dashboard</div>
@@ -723,7 +699,6 @@
                 <label><i class="fas fa-ticket-alt icon-ticket"></i> Ticket ID</label>
                 <input type="text" id="ticketInput" placeholder="Enter Ticket ID">
                 <!-- শ্যাডো / হিন্ট রিমুভ করা হয়েছে -->
-            </div>
             </div>
             <div class="input-group">
                 <label><i class="fas fa-map-marker-alt icon-area"></i> Area</label>
@@ -1061,9 +1036,3 @@
 </body>
 </html>
 ```
-
-
-
-
-
-
