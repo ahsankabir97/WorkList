@@ -55,14 +55,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow from original */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* Decorative circles from original */
         header::before {
             content: '';
             position: absolute;
@@ -99,10 +98,9 @@
             display: block;
         }
 
-        /* ORIGINAL MAIN TITLE STYLES */
         .main-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem; /* Reverted to Original */
+            font-size: 1.1rem; 
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -114,10 +112,9 @@
             background-clip: text;
         }
 
-        /* ORIGINAL COMPANY NAME STYLES */
         .company-name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; /* Reverted to Original */
+            font-size: 0.95rem; 
             font-weight: 700;
             letter-spacing: 0.3px;
             color: #40E0D0;
@@ -141,21 +138,19 @@
             gap: 4px;
         }
 
-        /* ORIGINAL DATE STYLES */
         #liveDate {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem; /* Reverted to Original */
+            font-size: 0.8rem; 
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
 
-        /* ORIGINAL CLOCK STYLES */
         #liveClock {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 0.80rem; /* Reverted to Original */
+            font-size: 0.80rem; 
             background: rgba(255, 255, 255, 0.15);
             padding: 6px 14px;
             border-radius: 10px;
@@ -169,7 +164,6 @@
             text-align: center;
         }
 
-        /* Sync Indicator (New Feature, kept small) */
         .sync-status {
             font-size: 0.6rem;
             color: rgba(255,255,255,0.7);
@@ -199,7 +193,7 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- Cards & Table (Lucrative Design Kept) --- */
+        /* --- Cards & Table --- */
         .card { 
             background: #ffffff; 
             border-radius: var(--radius); 
@@ -626,7 +620,7 @@
 <body>
 
 <div class="container">
-    <!-- Header (Original Styles Applied) -->
+    <!-- Header -->
     <header>
         <div class="header-left">
             <img src="https://z-cdn-media.chatglm.cn/files/acb00912-a376-4782-b313-80248fd0f8ed.png?auth_key=1870834439-20e10467e7154c949132c6f76f1a421e-0-71eb8030909b232371f257313e5acc97" alt="Link3 Logo" class="company-logo">
@@ -666,7 +660,7 @@
             </div>
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt"></i> Ticket ID</label>
-                <input type="text" id="ticketInput" placeholder="e.g. L3-21Feb26-029370">
+                <input type="text" id="ticketInput" placeholder="L3-..., TKI..., CR-...">
             </div>
             <div class="input-group">
                 <label><i class="fas fa-map-marker-alt"></i> Area</label>
@@ -686,7 +680,7 @@
                     <option value="Imamganj">Imamganj</option>
                     <option value="Islampur">Islampur</option>
                     <option value="Jatrabari">Jatrabari</option>
-            		<option value="Joypara">Joypara</option>
+            	    <option value="Joypara">Joypara</option>
                     <option value="Jurain">Jurain</option>
                     <option value="Kakrail">Kakrail</option>
                     <option value="Kamlapur">Kamlapur</option>
@@ -778,11 +772,19 @@
     let completed = JSON.parse(localStorage.getItem('completed_v15')) || [];
     let isSyncing = false;
 
-    // --- Ticket Validation Logic ---
+    // --- UPDATED Ticket Validation Logic (3 Formats) ---
     function validateTicketID(ticket) {
-        // Format: L3-DDMMMYY-XXXXX
-        const pattern = /^L3-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
-        return pattern.test(ticket);
+        // Format 1: L3-22Feb26-030306
+        const patternL3 = /^L3-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
+
+        // Format 2: TKI011225AA67000218 (TKI + 6 digits + 2 letters + 8 digits)
+        const patternTKI = /^TKI\d{6}[A-Za-z]{2}\d{8}$/;
+
+        // Format 3: CR-23Feb26-0176371
+        const patternCR = /^CR-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
+
+        // Check if ticket matches ANY of the 3 patterns
+        return patternL3.test(ticket) || patternTKI.test(ticket) || patternCR.test(ticket);
     }
 
     // --- Data Formatting ---
@@ -939,7 +941,7 @@
         }
 
         if(!validateTicketID(ticketValue)) {
-            showPopup('warning', 'Invalid Format', 'Please enter valid ticket id (e.g., L3-21Feb26-029370)');
+            showPopup('warning', 'Invalid Format', 'Please enter valid ticket id. Formats: L3-22Feb26-030306, TKI011225AA67000218, CR-23Feb26-0176371');
             ticketInput.focus();
             return;
         }
