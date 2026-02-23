@@ -3,45 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="30"> 
     <title>Technician Work Dashboard</title>
-	<link rel="shortcut icon" href="technician_favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+    <link rel="shortcut icon" href="technician_favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            /* Premium Gradients */
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --success-gradient: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
             --danger-gradient: linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%);
-            --company-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --warning-gradient: linear-gradient(135deg, #f0932b 0%, #f5576c 100%);
+            
+            /* Backgrounds & Shadows */
             --bg-color: #f8f9fd;
-            --white: #ffffff;
-            --radius: 16px;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-            --table-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
             --table-row-hover: rgba(224, 231, 255, 0.5);
-            --table-header-bg: linear-gradient(135deg, #e6f0ff 0%, #e0e7ff 100%);
+            
+            /* Radius */
+            --radius: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             font-family: 'Outfit', sans-serif; 
             background-color: var(--bg-color); 
-            padding: 15px; 
             color: #2d3436;
-            background: linear-gradient(135deg, #f8f9fd 0%, #eef2f7 100%);
             min-height: 100vh;
             font-size: 14px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fd 0%, #eef2f7 100%);
         }
+
         .container { 
             max-width: 1000px; 
             margin: 0 auto; 
             transform: scale(0.95);
             transform-origin: top center;
+            padding-bottom: 40px;
         }
 
-        /* আকর্ষণীয় হেডার ডিজাইন */
+        /* --- Header Design (Original Font Sizes Applied) --- */
         header {
             background: var(--primary-gradient);
             padding: 15px 25px; 
@@ -50,13 +55,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow from original */
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
+        /* Decorative circles from original */
         header::before {
             content: '';
             position: absolute;
@@ -87,16 +93,16 @@
             gap: 15px;
         }
 
-        /* লোগো স্টাইল */
         .company-logo {
             height: 60px; 
             width: 70px;
             display: block;
         }
 
+        /* ORIGINAL MAIN TITLE STYLES */
         .main-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Reverted to Original */
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -108,9 +114,10 @@
             background-clip: text;
         }
 
+        /* ORIGINAL COMPANY NAME STYLES */
         .company-name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Reverted to Original */
             font-weight: 700;
             letter-spacing: 0.3px;
             color: #40E0D0;
@@ -118,6 +125,7 @@
             z-index: 1;
             text-shadow: 0 1px 3px rgba(0, 51, 153, 0.3), 
                          0 1px 0 rgba(255, 255, 255, 0.5);
+            display: block;
         }
 
         .header-right { 
@@ -133,19 +141,21 @@
             gap: 4px;
         }
 
+        /* ORIGINAL DATE STYLES */
         #liveDate {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.8rem; /* Reverted to Original */
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
 
+        /* ORIGINAL CLOCK STYLES */
         #liveClock {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 0.80rem;
+            font-size: 0.80rem; /* Reverted to Original */
             background: rgba(255, 255, 255, 0.15);
             padding: 6px 14px;
             border-radius: 10px;
@@ -159,25 +169,43 @@
             text-align: center;
         }
 
-         /* কপিরাইট টেক্সট - কার্ডের ভেতরের জন্য */
-        .copyright-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.65rem;
-            color: #155DFC; 
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            text-align: left; /* ডান দিকে অ্যালাইন */
-            margin-top: 9px; /* টেবিল থেকে কিছু গ্যাপ */
+        /* Sync Indicator (New Feature, kept small) */
+        .sync-status {
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
         }
 
+        .sync-indicator {
+            width: 6px;
+            height: 6px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #4ade80;
+        }
+        
+        .sync-indicator.updating {
+            background-color: #facc15;
+            animation: pulse 1s infinite;
+        }
 
-        /* কার্ড ডিজাইন */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- Cards & Table (Lucrative Design Kept) --- */
         .card { 
-            background: var(--white); 
+            background: #ffffff; 
             border-radius: var(--radius); 
             padding: 20px; 
             margin-bottom: 20px; 
-            box-shadow: var(--shadow);
+            box-shadow: var(--card-shadow);
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(226, 232, 240, 0.8);
@@ -186,7 +214,7 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
         }
 
         .card-title {
@@ -199,6 +227,9 @@
             gap: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #4a5568;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 10px;
         }
 
         .card-new { border-top: 5px solid #667eea; }
@@ -225,7 +256,7 @@
             left: 0; 
         }
 
-        /* ফর্ম স্টাইল */
+        /* --- Form Design --- */
         .form-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
@@ -237,7 +268,6 @@
             display: flex; 
             flex-direction: column; 
             gap: 8px; 
-            position: relative;
         }
         
         label { 
@@ -265,9 +295,7 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
         }
 
-        /* টিকেট আইডি হেল্প টেক্সট - REMOVED AS REQUESTED */
-        
-        /* বাটন স্টাইল */
+        /* --- Buttons --- */
         .btn-assign { 
             background: var(--primary-gradient); 
             color: white; 
@@ -282,8 +310,6 @@
             letter-spacing: 0.8px;
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
-            position: relative;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -292,7 +318,7 @@
 
         .btn-assign:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(102, 126, 234, 0.35);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
         }
 
         .btn-assign:disabled {
@@ -301,12 +327,12 @@
             transform: none;
         }
 
-        /* টেবিল স্টাইল - ব্লুইশ ব্যাকগ্রাউন্ড */
+        /* --- Table Design --- */
         table { 
             width: 100%; 
             border-collapse: collapse; 
             margin-top: 12px;
-            background: var(--table-bg);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.08);
@@ -316,7 +342,7 @@
         th { 
             text-align: left; 
             padding: 14px 16px; 
-            background: var(--table-header-bg); 
+            background: linear-gradient(135deg, #e6f0ff 0%, #e0e7ff 100%); 
             font-family: 'Montserrat', sans-serif;
             font-size: 0.65rem; 
             color: #4a5568; 
@@ -354,7 +380,6 @@
             border-bottom: none;
         }
 
-        /* টেবিলের জোড় সারির আলাদা ব্যাকগ্রাউন্ড */
         tr:nth-child(even) td {
             background: rgba(248, 250, 252, 0.9);
         }
@@ -363,7 +388,7 @@
             background: var(--table-row-hover);
         }
 
-        /* ব্যাজ স্টাইল */
+        /* --- Badges --- */
         .badge { 
             padding: 6px 12px; 
             border-radius: 25px; 
@@ -374,7 +399,7 @@
             display: inline-block;
             text-transform: uppercase;
             letter-spacing: 0.3px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
             width: fit-content;
@@ -387,7 +412,7 @@
         .bg-nahid { background: linear-gradient(135deg, #eb4d4b 0%, #d446a6 100%); } 
         .bg-fahim { background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%); }
 
-        /* স্ট্যাটাস এনিমেশন */
+        /* --- Status & Action --- */
         .status-working { 
             color: #f5576c; 
             font-weight: 700; 
@@ -407,7 +432,6 @@
             50% { opacity: 0.4; } 
         }
 
-        /* ডান বাটন */
         .btn-done { 
             background: var(--success-gradient); 
             color: white; 
@@ -419,12 +443,11 @@
             font-weight: 700; 
             font-size: 0.65rem; 
             margin-top: 6px; 
-            display: block;
+            display: inline-flex;
             transition: all 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(0, 176, 155, 0.2);
-            display: flex;
             align-items: center;
             gap: 5px;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -435,7 +458,7 @@
             box-shadow: 0 5px 12px rgba(0, 176, 155, 0.3);
         }
 
-        /* সার্চ ও ক্লিয়ার বাটন */
+        /* --- Search & Clear --- */
         .search-box { 
             padding: 10px 12px; 
             border: 2px solid #00b09b; 
@@ -474,7 +497,7 @@
             box-shadow: 0 6px 16px rgba(255, 95, 109, 0.3);
         }
 
-        /* পপআপ মেসেজ স্টাইল */
+        /* --- Popup System --- */
         .popup-message {
             position: fixed;
             top: 20px;
@@ -505,28 +528,27 @@
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         }
 
-        .popup-success::before {
-            background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%);
-        }
-
-        .popup-warning::before {
-            background: linear-gradient(90deg, #ffa726 0%, #ff9800 100%);
-        }
+        .popup-content.warning::before { background: linear-gradient(90deg, #ffa726 0%, #ff9800 100%); }
+        .popup-content.success::before { background: linear-gradient(90deg, #00b09b 0%, #96c93d 100%); }
+        .popup-content.info::before { background: #3b82f6; }
 
         .popup-icon {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
             display: inline-block;
         }
 
         .popup-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #2d3748;
             margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .popup-text {
@@ -534,6 +556,7 @@
             font-size: 0.8rem;
             color: #4a5568;
             line-height: 1.4;
+            margin-left: 28px;
         }
 
         .popup-close {
@@ -571,137 +594,82 @@
         }
 
         @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: translateX(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(100%);
-                visibility: hidden;
-            }
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(100%); visibility: hidden; }
         }
 
-        /* রেসপনসিভ ডিজাইন */
+        .copyright-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.65rem;
+            color: #155DFC; 
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-align: left; 
+            margin-top: 9px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                transform: scale(1);
-                max-width: 100%;
-            }
-            
-            header { 
-                flex-direction: column; 
-                gap: 15px; 
-                text-align: center; 
-                padding: 15px; 
-            }
-
-            .header-left {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .header-right {
-                text-align: center;
-                width: 100%;
-            }
-
-            .datetime-container {
-                align-items: center;
-            }
-            
-            #liveClock {
-                min-width: 110px;
-            }
-
-            .copyright-text {
-                text-align: center; /* মোবাইলে কপিরাইট সেন্টারে */
-            }
-            
-            .form-grid { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .card {
-                padding: 16px;
-            }
-            
-            th, td {
-                padding: 10px 12px;
-            }
-            
-            .popup-message {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                max-width: none;
-            }
+            body { padding: 10px; }
+            .container { transform: scale(1); max-width: 100%; }
+            header { flex-direction: column; gap: 15px; text-align: center; padding: 15px; }
+            .header-left { flex-direction: column; text-align: center; }
+            .header-right { text-align: center; width: 100%; }
+            .datetime-container { align-items: center; }
+            .form-grid { grid-template-columns: 1fr; }
+            .card { padding: 16px; }
+            #liveClock { min-width: 110px; }
+            .popup-message { top: 10px; right: 10px; left: 10px; max-width: none; }
         }
-
-        /* আইকন স্টাইল */
-        .icon-calendar { color: #667eea; }
-        .icon-ticket { color: #764ba2; }
-        .icon-area { color: #f5576c; }
-        .icon-person { color: #00b09b; }
-        .icon-dashboard { color: #4834d4; }
-        .icon-working { color: #f5576c; }
-        .icon-done { color: #00b09b; }
-        .icon-search { color: #00b09b; }
-        .icon-clear { color: white; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- আকর্ষণীয় হেডার -->
+    <!-- Header (Original Styles Applied) -->
     <header>
         <div class="header-left">
-            <!-- লোগো আপডেট করা হয়েছে -->
             <img src="https://z-cdn-media.chatglm.cn/files/acb00912-a376-4782-b313-80248fd0f8ed.png?auth_key=1870834439-20e10467e7154c949132c6f76f1a421e-0-71eb8030909b232371f257313e5acc97" alt="Link3 Logo" class="company-logo">
-            
             <div>
                 <div class="main-title">Work Dashboard</div>
-                <div class="company-name">Link3 Technologies Ltd</div>
+                <span class="company-name">Link3 Technologies Ltd</span>
             </div>
         </div>
         <div class="header-right">
             <div class="datetime-container">
                 <span id="liveDate"><i class="far fa-calendar-alt"></i> </span>
                 <span id="liveClock"><i class="far fa-clock"></i> </span>
-                <!-- কপিরাইট এখান থেকে সরানো হয়েছে -->
+                <div class="sync-status">
+                    <div id="syncIndicator" class="sync-indicator"></div>
+                    <span id="syncText">Live Sync Active</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- লাইভ সামারি -->
+    <!-- Live Summary -->
     <div class="card" style="border-top: 5px solid #4834d4;">
-        <div class="card-title" style="color:#4834d4;"><i class="fas fa-chart-bar icon-dashboard"></i> TASK LIVE SUMMARY</div>
+        <div class="card-title" style="color:#4834d4;"><i class="fas fa-chart-bar"></i> TASK LIVE SUMMARY</div>
         <div class="sheet-wrapper">
             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
         </div>
-        <!-- কপিরাইট টেক্সট এখানে যুক্ত করা হয়েছে -->
         <div class="copyright-text">© Ahsanul Kabir</div>
     </div>
 
-    <!-- নতুন টাস্ক এসাইনমেন্ট -->
+    <!-- New Assignment -->
     <div class="card card-new">
         <div class="card-title" style="color:#667eea;"><i class="fas fa-plus-circle"></i> CREATE NEW ASSIGNMENT</div>
         <div class="form-grid">
             <div class="input-group">
-                <label><i class="far fa-calendar-alt icon-calendar"></i> Date</label>
+                <label><i class="far fa-calendar-alt"></i> Date</label>
                 <input type="date" id="dateInput">
             </div>
             <div class="input-group">
-                <label><i class="fas fa-ticket-alt icon-ticket"></i> Ticket ID</label>
-                <input type="text" id="ticketInput" placeholder="Enter Full Ticket ID">
-                <!-- শ্যাডো / হিন্ট রিমুভ করা হয়েছে -->
+                <label><i class="fas fa-ticket-alt"></i> Ticket ID</label>
+                <input type="text" id="ticketInput" placeholder="e.g. L3-21Feb26-029370">
             </div>
             <div class="input-group">
-                <label><i class="fas fa-map-marker-alt icon-area"></i> Area</label>
+                <label><i class="fas fa-map-marker-alt"></i> Area</label>
                 <select id="areaInput">
                     <option value="">Select Area</option>
                     <option value="Aganagar">Aganagar</option>
@@ -718,7 +686,7 @@
                     <option value="Imamganj">Imamganj</option>
                     <option value="Islampur">Islampur</option>
                     <option value="Jatrabari">Jatrabari</option>
-		    		<option value="Joypara">Joypara</option>
+            		<option value="Joypara">Joypara</option>
                     <option value="Jurain">Jurain</option>
                     <option value="Kakrail">Kakrail</option>
                     <option value="Kamlapur">Kamlapur</option>
@@ -746,10 +714,10 @@
                     <option value="Siddheshwari">Siddheshwari</option>
                     <option value="Tikatuli">Tikatuli</option>
                     <option value="Wari">Wari</option>
-	</select>
+    </select>
             </div>
             <div class="input-group">
-                <label><i class="fas fa-user icon-person"></i> Staff</label>
+                <label><i class="fas fa-user"></i> Staff</label>
                 <select id="personInput">
                     <option value="">Assign to...</option>
                     <option value="Sumon">Sumon</option>
@@ -764,9 +732,9 @@
         </div>
     </div>
 
-    <!-- চলমান টাস্ক -->
+    <!-- Ongoing Tasks -->
     <div class="card card-ongoing">
-        <div class="card-title" style="color:#f5576c;"><i class="fas fa-spinner fa-pulse icon-working"></i> ONGOING TASKS (WORKING)</div>
+        <div class="card-title" style="color:#f5576c;"><i class="fas fa-spinner fa-pulse"></i> ONGOING TASKS (WORKING)</div>
         <div style="overflow-x:auto;">
             <table id="ongoingTable">
                 <thead>
@@ -777,14 +745,14 @@
         </div>
     </div>
 
-    <!-- সম্পন্ন টাস্ক -->
+    <!-- Completed Tasks -->
     <div class="card card-completed">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <div class="card-title" style="color:#00b09b;"><i class="fas fa-check-circle icon-done"></i> COMPLETED TASKS</div>
+            <div class="card-title" style="color:#00b09b; margin:0; padding:0; border:none;"><i class="fas fa-check-circle"></i> COMPLETED TASKS</div>
             <div style="display:flex; gap:10px; align-items:center;">
                 <input type="date" id="searchDate" class="search-box" onchange="renderAll()" placeholder="Filter by date">
                 <button class="btn-clear" onclick="clearCompleted()">
-                    <i class="fas fa-trash-alt icon-clear"></i> Clear
+                    <i class="fas fa-trash-alt"></i> Clear
                 </button>
             </div>
         </div>
@@ -799,15 +767,25 @@
     </div>
 </div>
 
-<!-- পপআপ মেসেজ কন্টেইনার -->
+<!-- Popup Container -->
 <div id="popupContainer"></div>
 
 <script>
     const G_URL = "https://script.google.com/macros/s/AKfycbz1ZE69wIfAem_gmCk5v-_2tH6ohSOdZoUkFpE1c0HRnQSqZxHfHVzTvVRAqjCcdB0/exec";
-    let ongoing = JSON.parse(localStorage.getItem('ongoing_v14')) || [];
-    let completed = JSON.parse(localStorage.getItem('completed_v14')) || [];
+    
+    // Local State
+    let ongoing = JSON.parse(localStorage.getItem('ongoing_v15')) || [];
+    let completed = JSON.parse(localStorage.getItem('completed_v15')) || [];
+    let isSyncing = false;
 
-    // Helper to format date as DD-MM-YYYY
+    // --- Ticket Validation Logic ---
+    function validateTicketID(ticket) {
+        // Format: L3-DDMMMYY-XXXXX
+        const pattern = /^L3-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
+        return pattern.test(ticket);
+    }
+
+    // --- Data Formatting ---
     function formatDateDisplay(dateStr) {
         if (!dateStr) return "";
         const parts = dateStr.split('-');
@@ -815,90 +793,153 @@
         return `${parts[2]}-${parts[1]}-${parts[0]}`;
     }
 
-    // পপআপ মেসেজ শো করার ফাংশন
+    // --- Popup System ---
     function showPopup(type, title, message) {
         const popupContainer = document.getElementById('popupContainer');
         const popupId = 'popup-' + Date.now();
+        
+        let icon = '';
+        if (type === 'success') icon = '<i class="fas fa-check-circle" style="color:var(--success-gradient)"></i>';
+        else if (type === 'warning') icon = '<i class="fas fa-exclamation-triangle" style="color:#d97706"></i>';
+        else if (type === 'info') icon = '<i class="fas fa-info-circle" style="color:#3b82f6"></i>';
         
         const popup = document.createElement('div');
         popup.id = popupId;
         popup.className = 'popup-message';
         
-        let icon = '';
-        if (type === 'success') {
-            icon = '✅';
-        } else if (type === 'warning') {
-            icon = '⚠️';
-        } else if (type === 'info') {
-            icon = 'ℹ️';
-        } else {
-            icon = '🚀';
-        }
-        
         popup.innerHTML = `
-            <div class="popup-content ${type === 'success' ? 'popup-success' : ''} ${type === 'warning' ? 'popup-warning' : ''}">
-                <button class="popup-close" onclick="closePopup('${popupId}')">×</button>
-                <div class="popup-icon">${icon}</div>
-                <div class="popup-title">${title}</div>
+            <div class="popup-content ${type}">
+                <button class="popup-close" onclick="closePopup('${popupId}')">&times;</button>
+                <div class="popup-title">${icon} ${title}</div>
                 <div class="popup-text">${message}</div>
             </div>
         `;
         
         popupContainer.appendChild(popup);
-        
-        // ৫ সেকেন্ড পর অটোমেটিক বন্ধ
-        setTimeout(() => {
-            closePopup(popupId);
-        }, 5000);
+        setTimeout(() => closePopup(popupId), 4000);
     }
 
-    // পপআপ বন্ধ করার ফাংশন
     function closePopup(popupId) {
         const popup = document.getElementById(popupId);
         if (popup) {
-            popup.style.animation = 'fadeOut 0.5s ease forwards';
-            setTimeout(() => {
-                if (popup && popup.parentNode) {
-                    popup.parentNode.removeChild(popup);
-                }
-            }, 500);
+            popup.style.animation = 'fadeOut 0.4s ease forwards';
+            setTimeout(() => { if(popup.parentNode) popup.parentNode.removeChild(popup); }, 400);
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // Set today's date as default
-        const today = new Date();
-        const formattedDate = today.toISOString().split('T')[0];
-        document.getElementById('dateInput').value = formattedDate;
+    // --- Sync Logic (Auto Update from Google Sheet) ---
+    async function syncDataFromSheet() {
+        if (isSyncing) return;
+        isSyncing = true;
         
-        // Set focus on ticket input (NO popup message)
-        setTimeout(() => {
-            document.getElementById('ticketInput').focus();
-        }, 500);
+        const indicator = document.getElementById('syncIndicator');
+        const syncText = document.getElementById('syncText');
+        indicator.classList.add('updating');
+        syncText.innerText = "Updating...";
+        syncText.style.color = "#d97706";
+
+        try {
+            const response = await fetch(G_URL);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.ongoing) {
+                    ongoing = data.ongoing;
+                    localStorage.setItem('ongoing_v15', JSON.stringify(ongoing));
+                }
+                if (data.completed) {
+                    completed = data.completed;
+                    localStorage.setItem('completed_v15', JSON.stringify(completed));
+                }
+                renderAll();
+                syncText.innerText = "Just Updated";
+                syncText.style.color = "#059669";
+            } else {
+                throw new Error("Server response not OK");
+            }
+        } catch (e) {
+            // Silent fail, keep local data
+            syncText.innerText = "Using Local";
+            syncText.style.color = "#6b7280";
+        } finally {
+            isSyncing = false;
+            setTimeout(() => {
+                indicator.classList.remove('updating');
+                if(syncText.innerText === "Updating...") syncText.innerText = "Live Sync Active";
+            }, 1000);
+        }
+    }
+
+    // --- Core Functions ---
+    function saveData() {
+        localStorage.setItem('ongoing_v15', JSON.stringify(ongoing));
+        localStorage.setItem('completed_v15', JSON.stringify(completed));
+    }
+
+    function renderAll() {
+        const searchVal = document.getElementById('searchDate').value;
+        const onBody = document.querySelector('#ongoingTable tbody');
         
-        renderAll();
+        // Render Ongoing
+        if (ongoing.length === 0) {
+            onBody.innerHTML = '<tr><td colspan="6" align="center" style="padding:25px; color:#718096; font-size:0.8rem;"><i class="fas fa-inbox"></i> No Active Tasks Found</td></tr>';
+        } else {
+            onBody.innerHTML = ongoing.map(t => `
+                <tr>
+                    <td>
+                        <strong><i class="far fa-calendar-alt"></i> ${formatDateDisplay(t.date)}</strong> 
+                        <button class="btn-done" onclick="markDone(${t.id})">
+                            <i class="fas fa-check"></i> MARK DONE
+                        </button>
+                    </td>
+                    <td style="color:#764ba2; font-weight:600; font-family:'Montserrat';">
+                        <i class="far fa-clock"></i> ${t.startTime}
+                    </td>
+                    <td><b style="font-family:'Montserrat';"><i class="fas fa-ticket-alt"></i> ${t.ticket}</b></td>
+                    <td><i class="fas fa-map-marker-alt"></i> ${t.area}</td>
+                    <td><span class="badge bg-${t.person.toLowerCase()}"><i class="fas fa-user"></i> ${t.person}</span></td>
+                    <td class="status-working"><i class="fas fa-spinner fa-pulse"></i> ${t.remarks}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Completed
+        const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
+        const compBody = document.querySelector('#completedTable tbody');
         
-        // লাইভ ডেট-টাইম আপডেট
-        setInterval(() => { 
-            const now = new Date();
-            document.getElementById('liveClock').innerHTML = `<i class="far fa-clock"></i> ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}`;
-            document.getElementById('liveDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${now.toLocaleDateString(undefined, { 
-                weekday: 'short', 
-                month: 'short', 
-                day: 'numeric', 
-                year: 'numeric' 
-            })}`;
-        }, 1000);
-    });
+        if (filtered.length === 0) {
+            compBody.innerHTML = '<tr><td colspan="7" align="center" style="padding:25px; color:#718096; font-size:0.8rem;"><i class="fas fa-inbox"></i> No Completed Tasks Found</td></tr>';
+        } else {
+            compBody.innerHTML = filtered.map(t => `
+                <tr>
+                    <td><strong><i class="far fa-calendar-alt"></i> ${formatDateDisplay(t.date)}</strong></td>
+                    <td><i class="far fa-clock"></i> ${t.startTime}</td>
+                    <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">
+                        <i class="fas fa-flag-checkered"></i> ${t.doneTime}
+                    </td>
+                    <td><b style="font-family:'Montserrat';"><i class="fas fa-ticket-alt"></i> ${t.ticket}</b></td>
+                    <td><i class="fas fa-map-marker-alt"></i> ${t.area}</td>
+                    <td><span class="badge bg-${t.person.toLowerCase()}"><i class="fas fa-user"></i> ${t.person}</span></td>
+                    <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">
+                        <i class="fas fa-check-circle"></i> Done
+                    </td>
+                </tr>
+            `).join('');
+        }
+    }
 
     async function addTask() {
         const btn = document.getElementById('assignBtn');
         const ticketInput = document.getElementById('ticketInput');
         const ticketValue = ticketInput.value.trim();
         
-        // Check if ticket ID is empty
         if(!ticketValue) {
-            showPopup('warning', 'Ticket ID Required', 'Please enter a Ticket ID (e.g., L3-10Feb24-001)');
+            showPopup('warning', 'Missing Input', 'Please enter a Ticket ID.');
+            ticketInput.focus();
+            return;
+        }
+
+        if(!validateTicketID(ticketValue)) {
+            showPopup('warning', 'Invalid Format', 'Please enter valid ticket id (e.g., L3-21Feb26-029370)');
             ticketInput.focus();
             return;
         }
@@ -914,16 +955,15 @@
         };
         
         if(!task.area || !task.person) {
-            showPopup('warning', 'Missing Information', 'Please select both Area and Staff!');
+            showPopup('warning', 'Incomplete Info', 'Please select both Area and Staff.');
             return;
         }
         
-        // ডুপ্লিকেট টিকেট চেক করুন
         const allTickets = [...ongoing, ...completed];
         const isDuplicate = allTickets.some(t => t.ticket === task.ticket);
         
         if(isDuplicate) {
-            showPopup('warning', 'Duplicate Ticket', `Ticket ID "${task.ticket}" already exists in ongoing or completed tasks!`);
+            showPopup('warning', 'Duplicate Ticket', `Ticket ID "${task.ticket}" already exists!`);
             ticketInput.focus();
             return;
         }
@@ -937,18 +977,12 @@
             saveData(); 
             renderAll();
             
-            // Clear form
             ticketInput.value = '';
             document.getElementById('areaInput').value = '';
             document.getElementById('personInput').value = '';
             
-            // টাস্ক এসাইন করা হলে পপআপ মেসেজ শো করা
             showPopup('success', 'Task Assigned', `${task.ticket} assigned to ${task.person} for ${task.area} area`);
-            
-            // Focus back to ticket input for next entry
-            setTimeout(() => {
-                ticketInput.focus();
-            }, 300);
+            setTimeout(() => { ticketInput.focus(); }, 300);
             
         } catch(e) { 
             showPopup('warning', 'Sync Error', 'Failed to sync with server! Task saved locally.');
@@ -960,6 +994,8 @@
 
     async function markDone(id) {
         const idx = ongoing.findIndex(t => t.id === id);
+        if (idx === -1) return;
+
         const doneTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         const task = {...ongoing[idx], doneTime, remarks: "Done"};
         
@@ -970,10 +1006,7 @@
             completed[0].remarks = "Done";
             saveData(); 
             renderAll();
-            
-            // টাস্ক কমপ্লিট করা হলে পপআপ মেসেজ শো করা
             showPopup('success', 'Task Completed', `${task.ticket} completed by ${task.person} at ${doneTime}`);
-            
         } catch(e) { 
             showPopup('warning', 'Sync Error', 'Error syncing with server! Task marked done locally.');
         }
@@ -988,55 +1021,27 @@
         } 
     }
 
-    function saveData() {
-        localStorage.setItem('ongoing_v14', JSON.stringify(ongoing));
-        localStorage.setItem('completed_v14', JSON.stringify(completed));
-    }
-
-    function renderAll() {
-        const searchVal = document.getElementById('searchDate').value;
-        const onBody = document.querySelector('#ongoingTable tbody');
+    // --- Initialization ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const today = new Date();
+        document.getElementById('dateInput').value = today.toISOString().split('T')[0];
         
-        onBody.innerHTML = ongoing.map(t => `
-            <tr>
-                <td>
-                    <strong><i class="far fa-calendar-alt"></i> ${formatDateDisplay(t.date)}</strong> 
-                    <button class="btn-done" onclick="markDone(${t.id})">
-                        <i class="fas fa-check"></i> MARK DONE
-                    </button>
-                </td>
-                <td style="color:#764ba2; font-weight:600; font-family:'Montserrat';">
-                    <i class="far fa-clock"></i> ${t.startTime}
-                </td>
-                <td><b style="font-family:'Montserrat';"><i class="fas fa-ticket-alt"></i> ${t.ticket}</b></td>
-                <td><i class="fas fa-map-marker-alt"></i> ${t.area}</td>
-                <td><span class="badge bg-${t.person.toLowerCase()}"><i class="fas fa-user"></i> ${t.person}</span></td>
-                <td class="status-working"><i class="fas fa-spinner fa-pulse"></i> ${t.remarks}</td>
-            </tr>
-        `).join('') || '<tr><td colspan="6" align="center" style="padding:25px; color:#718096; font-size:0.8rem;"><i class="fas fa-inbox"></i> No Active Tasks Found</td></tr>';
+        renderAll();
+        
+        setInterval(() => { 
+            const now = new Date();
+            document.getElementById('liveClock').innerHTML = `<i class="far fa-clock"></i> ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}`;
+            document.getElementById('liveDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${now.toLocaleDateString(undefined, { 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            })}`;
+        }, 1000);
 
-        const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
-        document.querySelector('#completedTable tbody').innerHTML = filtered.map(t => `
-            <tr>
-                <td><strong><i class="far fa-calendar-alt"></i> ${formatDateDisplay(t.date)}</strong></td>
-                <td><i class="far fa-clock"></i> ${t.startTime}</td>
-                <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">
-                    <i class="fas fa-flag-checkered"></i> ${t.doneTime}
-                </td>
-                <td><b style="font-family:'Montserrat';"><i class="fas fa-ticket-alt"></i> ${t.ticket}</b></td>
-                <td><i class="fas fa-map-marker-alt"></i> ${t.area}</td>
-                <td><span class="badge bg-${t.person.toLowerCase()}"><i class="fas fa-user"></i> ${t.person}</span></td>
-                <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">
-                    <i class="fas fa-check-circle"></i> Done
-                </td>
-            </tr>
-        `).join('') || '<tr><td colspan="7" align="center" style="padding:25px; color:#718096; font-size:0.8rem;"><i class="fas fa-inbox"></i> No Completed Tasks Found</td></tr>';
-    }
+        syncDataFromSheet();
+        setInterval(syncDataFromSheet, 30000);
+    });
 </script>
 </body>
 </html>
-```
-
-
-
-
