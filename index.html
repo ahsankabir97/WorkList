@@ -660,7 +660,7 @@
             </div>
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt"></i> Ticket ID</label>
-                <input type="text" id="ticketInput" placeholder="L3-..., TKI..., CR-...">
+                <input type="text" id="ticketInput" placeholder="L3-..., TKI..., CR-..., SVR-...">
             </div>
             <div class="input-group">
                 <label><i class="fas fa-map-marker-alt"></i> Area</label>
@@ -680,7 +680,7 @@
                     <option value="Imamganj">Imamganj</option>
                     <option value="Islampur">Islampur</option>
                     <option value="Jatrabari">Jatrabari</option>
-            	    <option value="Joypara">Joypara</option>
+            		<option value="Joypara">Joypara</option>
                     <option value="Jurain">Jurain</option>
                     <option value="Kakrail">Kakrail</option>
                     <option value="Kamlapur">Kamlapur</option>
@@ -772,7 +772,7 @@
     let completed = JSON.parse(localStorage.getItem('completed_v15')) || [];
     let isSyncing = false;
 
-    // --- UPDATED Ticket Validation Logic (3 Formats) ---
+    // --- UPDATED Ticket Validation Logic (4 Formats) ---
     function validateTicketID(ticket) {
         // Format 1: L3-22Feb26-030306
         const patternL3 = /^L3-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
@@ -782,9 +782,12 @@
 
         // Format 3: CR-23Feb26-0176371
         const patternCR = /^CR-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
+        
+        // Format 4: SVR-26Jan26-0082979 (NEW)
+        const patternSVR = /^SVR-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
 
-        // Check if ticket matches ANY of the 3 patterns
-        return patternL3.test(ticket) || patternTKI.test(ticket) || patternCR.test(ticket);
+        // Check if ticket matches ANY of the 4 patterns
+        return patternL3.test(ticket) || patternTKI.test(ticket) || patternCR.test(ticket) || patternSVR.test(ticket);
     }
 
     // --- Data Formatting ---
@@ -941,7 +944,7 @@
         }
 
         if(!validateTicketID(ticketValue)) {
-            showPopup('warning', 'Invalid Format', 'Please enter valid ticket id. Formats: L3-22Feb26-030306, TKI011225AA67000218, CR-23Feb26-0176371');
+            showPopup('warning', 'Invalid Format', 'Please enter valid ticket id. Formats: L3-22Feb26-030306, TKI011225AA67000218, CR-23Feb26-0176371, SVR-26Jan26-0082979');
             ticketInput.focus();
             return;
         }
