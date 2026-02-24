@@ -46,7 +46,7 @@
             padding-bottom: 40px;
         }
 
-        /* --- Header Design (Original Font Sizes Applied) --- */
+        /* --- Header Design --- */
         header {
             background: var(--primary-gradient);
             padding: 15px 25px; 
@@ -602,451 +602,50 @@
             margin-top: 9px;
         }
 
-        /* Responsive */
+        /* Responsive - UPDATED FOR COMPACT HEADER */
         @media (max-width: 768px) {
             body { padding: 10px; }
             .container { transform: scale(1); max-width: 100%; }
-            header { flex-direction: column; gap: 15px; text-align: center; padding: 15px; }
-            .header-left { flex-direction: column; text-align: center; }
-            .header-right { text-align: center; width: 100%; }
-            .datetime-container { align-items: center; }
-            .form-grid { grid-template-columns: 1fr; }
-            .card { padding: 16px; }
-            #liveClock { min-width: 110px; }
-            .popup-message { top: 10px; right: 10px; left: 10px; max-width: none; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <!-- Header -->
-    <header>
-        <div class="header-left">
-            <img src="https://z-cdn-media.chatglm.cn/files/acb00912-a376-4782-b313-80248fd0f8ed.png?auth_key=1870834439-20e10467e7154c949132c6f76f1a421e-0-71eb8030909b232371f257313e5acc97" alt="Link3 Logo" class="company-logo">
-            <div>
-                <div class="main-title">Work Dashboard</div>
-                <span class="company-name">Link3 Technologies Ltd</span>
-            </div>
-        </div>
-        <div class="header-right">
-            <div class="datetime-container">
-                <span id="liveDate"><i class="far fa-calendar-alt"></i> </span>
-                <span id="liveClock"><i class="far fa-clock"></i> </span>
-                <div class="sync-status">
-                    <div id="syncIndicator" class="sync-indicator"></div>
-                    <span id="syncText">Live Sync Active</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Live Summary -->
-    <div class="card" style="border-top: 5px solid #4834d4;">
-        <div class="card-title" style="color:#4834d4;"><i class="fas fa-chart-bar"></i> TASK LIVE SUMMARY</div>
-        <div class="sheet-wrapper">
-            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTYE61oI9ahQllfKmXmV-ulhGeFDi16gBDgHN8b4NWk9Y3bLyxnyc8S06Wk_TTU21YzVFj2aKKvHDJG/pubhtml?gid=337897408&single=true&widget=false&headers=false&range=A1:M7"></iframe>
-        </div>
-        <div class="copyright-text">© Ahsanul Kabir</div>
-    </div>
-
-    <!-- New Assignment -->
-    <div class="card card-new">
-        <div class="card-title" style="color:#667eea;"><i class="fas fa-plus-circle"></i> CREATE NEW ASSIGNMENT</div>
-        <div class="form-grid">
-            <div class="input-group">
-                <label><i class="far fa-calendar-alt"></i> Date</label>
-                <input type="date" id="dateInput">
-            </div>
-            <div class="input-group">
-                <label><i class="fas fa-ticket-alt"></i> Ticket ID</label>
-                <input type="text" id="ticketInput" placeholder="L3-..., TKI..., CR-..., SVR-...">
-            </div>
-            <div class="input-group">
-                <label><i class="fas fa-map-marker-alt"></i> Area</label>
-                <select id="areaInput">
-                    <option value="">Select Area</option>
-                    <option value="Aganagar">Aganagar</option>
-                    <option value="Babubazar">Babubazar</option>
-                    <option value="Bangshal">Bangshal</option>
-                    <option value="BailyRoad">BailyRoad</option>
-                    <option value="Chawkbazar">Chawkbazar</option>
-                    <option value="Dhalpur">Dhalpur</option>
-                    <option value="Donia">Donia</option>
-                    <option value="Demra">Demra</option>
-                    <option value="Eskaton">Eskaton</option>
-                    <option value="Ganderia">Ganderia</option>
-                    <option value="Gulistan">Gulistan</option>
-                    <option value="Imamganj">Imamganj</option>
-                    <option value="Islampur">Islampur</option>
-                    <option value="Jatrabari">Jatrabari</option>
-            		<option value="Joypara">Joypara</option>
-                    <option value="Jurain">Jurain</option>
-                    <option value="Kakrail">Kakrail</option>
-                    <option value="Kamlapur">Kamlapur</option>
-                    <option value="Keraniganj">Keraniganj</option>
-                    <option value="Lalbagh">Lalbagh</option>
-                    <option value="Matuail">Matuail</option>
-                    <option value="Malibag">Malibag</option>
-                    <option value="Mitford">Mitford</option>
-                    <option value="Moghbazar">Moghbazar</option>
-                    <option value="Motijheel">Motijheel</option>
-                    <option value="Moulovibazar">Moulovibazar</option>
-                    <option value="Nawabpur">Nawabpur</option>
-                    <option value="Nayabazar">Nayabazar</option>
-                    <option value="Purana Paltan">Purana Paltan</option>
-                    <option value="Naya Paltan">Naya Paltan</option>
-                    <option value="Rajarbag">Rajarbag</option>
-                    <option value="Ramna">Ramna</option>
-                    <option value="RK Mission Road">RK Mission</option>
-                    <option value="SadarGhat">SadarGhat</option>
-                    <option value="SanirAkhra">SanirAkhra</option>
-                    <option value="Segunbagicha">Segunbagicha</option>
-                    <option value="Shahjahanpur">Shahjahanpur</option>
-                    <option value="Shantinagar">Shantinagar</option>
-                    <option value="Shyampur">Shyampur</option>
-                    <option value="Siddheshwari">Siddheshwari</option>
-                    <option value="Tikatuli">Tikatuli</option>
-                    <option value="Wari">Wari</option>
-    </select>
-            </div>
-            <div class="input-group">
-                <label><i class="fas fa-user"></i> Staff</label>
-                <select id="personInput">
-                    <option value="">Assign to...</option>
-                    <option value="Sumon">Sumon</option>
-                    <option value="Alamin">Alamin</option>
-                    <option value="Nahid">Nahid</option>
-                    <option value="Fahim">Fahim</option>
-                </select>
-            </div>
-            <button class="btn-assign" id="assignBtn" onclick="addTask()">
-                <i class="fas fa-paper-plane"></i> Assign Task
-            </button>
-        </div>
-    </div>
-
-    <!-- Ongoing Tasks -->
-    <div class="card card-ongoing">
-        <div class="card-title" style="color:#f5576c;"><i class="fas fa-spinner fa-pulse"></i> ONGOING TASKS (WORKING)</div>
-        <div style="overflow-x:auto;">
-            <table id="ongoingTable">
-                <thead>
-                    <tr><th>Date & Action</th><th>Start</th><th>Ticket ID</th><th>Area</th><th>Staff</th><th>Status</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Completed Tasks -->
-    <div class="card card-completed">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <div class="card-title" style="color:#00b09b; margin:0; padding:0; border:none;"><i class="fas fa-check-circle"></i> COMPLETED TASKS</div>
-            <div style="display:flex; gap:10px; align-items:center;">
-                <input type="date" id="searchDate" class="search-box" onchange="renderAll()" placeholder="Filter by date">
-                <button class="btn-clear" onclick="clearCompleted()">
-                    <i class="fas fa-trash-alt"></i> Clear
-                </button>
-            </div>
-        </div>
-        <div style="overflow-x:auto;">
-            <table id="completedTable">
-                <thead>
-                    <tr><th>Date</th><th>Start</th><th>End</th><th>Ticket</th><th>Area</th><th>Staff</th><th>Status</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<!-- Popup Container -->
-<div id="popupContainer"></div>
-
-<script>
-    const G_URL = "https://script.google.com/macros/s/AKfycbz1ZE69wIfAem_gmCk5v-_2tH6ohSOdZoUkFpE1c0HRnQSqZxHfHVzTvVRAqjCcdB0/exec";
-    
-    // Local State
-    let ongoing = JSON.parse(localStorage.getItem('ongoing_v15')) || [];
-    let completed = JSON.parse(localStorage.getItem('completed_v15')) || [];
-    let isSyncing = false;
-
-    // --- UPDATED Ticket Validation Logic (4 Formats) ---
-    function validateTicketID(ticket) {
-        // Format 1: L3-22Feb26-030306
-        const patternL3 = /^L3-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
-
-        // Format 2: TKI011225AA67000218 (TKI + 6 digits + 2 letters + 8 digits)
-        const patternTKI = /^TKI\d{6}[A-Za-z]{2}\d{8}$/;
-
-        // Format 3: CR-23Feb26-0176371
-        const patternCR = /^CR-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
-        
-        // Format 4: SVR-26Jan26-0082979 (NEW)
-        const patternSVR = /^SVR-\d{2}[A-Za-z]{3}\d{2}-\d+$/;
-
-        // Check if ticket matches ANY of the 4 patterns
-        return patternL3.test(ticket) || patternTKI.test(ticket) || patternCR.test(ticket) || patternSVR.test(ticket);
-    }
-
-    // --- Data Formatting ---
-    function formatDateDisplay(dateStr) {
-        if (!dateStr) return "";
-        const parts = dateStr.split('-');
-        if (parts.length !== 3) return dateStr;
-        return `${parts[2]}-${parts[1]}-${parts[0]}`;
-    }
-
-    // --- Popup System ---
-    function showPopup(type, title, message) {
-        const popupContainer = document.getElementById('popupContainer');
-        const popupId = 'popup-' + Date.now();
-        
-        let icon = '';
-        if (type === 'success') icon = '<i class="fas fa-check-circle" style="color:var(--success-gradient)"></i>';
-        else if (type === 'warning') icon = '<i class="fas fa-exclamation-triangle" style="color:#d97706"></i>';
-        else if (type === 'info') icon = '<i class="fas fa-info-circle" style="color:#3b82f6"></i>';
-        
-        const popup = document.createElement('div');
-        popup.id = popupId;
-        popup.className = 'popup-message';
-        
-        popup.innerHTML = `
-            <div class="popup-content ${type}">
-                <button class="popup-close" onclick="closePopup('${popupId}')">&times;</button>
-                <div class="popup-title">${icon} ${title}</div>
-                <div class="popup-text">${message}</div>
-            </div>
-        `;
-        
-        popupContainer.appendChild(popup);
-        setTimeout(() => closePopup(popupId), 4000);
-    }
-
-    function closePopup(popupId) {
-        const popup = document.getElementById(popupId);
-        if (popup) {
-            popup.style.animation = 'fadeOut 0.4s ease forwards';
-            setTimeout(() => { if(popup.parentNode) popup.parentNode.removeChild(popup); }, 400);
-        }
-    }
-
-    // --- Sync Logic (Auto Update from Google Sheet) ---
-    async function syncDataFromSheet() {
-        if (isSyncing) return;
-        isSyncing = true;
-        
-        const indicator = document.getElementById('syncIndicator');
-        const syncText = document.getElementById('syncText');
-        indicator.classList.add('updating');
-        syncText.innerText = "Updating...";
-        syncText.style.color = "#d97706";
-
-        try {
-            const response = await fetch(G_URL);
-            if (response.ok) {
-                const data = await response.json();
-                if (data.ongoing) {
-                    ongoing = data.ongoing;
-                    localStorage.setItem('ongoing_v15', JSON.stringify(ongoing));
-                }
-                if (data.completed) {
-                    completed = data.completed;
-                    localStorage.setItem('completed_v15', JSON.stringify(completed));
-                }
-                renderAll();
-                syncText.innerText = "Just Updated";
-                syncText.style.color = "#059669";
-            } else {
-                throw new Error("Server response not OK");
+            
+            /* Header Layout Changes */
+            header {
+                flex-direction: row; /* Keeps Logo and Text side-by-side */
+                flex-wrap: wrap; /* Allows wrapping on extremely small screens */
+                gap: 8px;
+                padding: 8px 12px; /* Reduced padding for compact look */
+                justify-content: space-between; /* Pushes elements apart */
+                align-items: center;
             }
-        } catch (e) {
-            // Silent fail, keep local data
-            syncText.innerText = "Using Local";
-            syncText.style.color = "#6b7280";
-        } finally {
-            isSyncing = false;
-            setTimeout(() => {
-                indicator.classList.remove('updating');
-                if(syncText.innerText === "Updating...") syncText.innerText = "Live Sync Active";
-            }, 1000);
-        }
-    }
 
-    // --- Core Functions ---
-    function saveData() {
-        localStorage.setItem('ongoing_v15', JSON.stringify(ongoing));
-        localStorage.setItem('completed_v15', JSON.stringify(completed));
-    }
+            .header-left {
+                flex-direction: row; /* Horizontal alignment */
+                align-items: center; /* Vertical centering */
+                text-align: left;
+                gap: 8px; /* Tighter gap */
+                flex: 1; /* Take available space */
+            }
 
-    function renderAll() {
-        const searchVal = document.getElementById('searchDate').value;
-        const onBody = document.querySelector('#ongoingTable tbody');
-        
-        // Render Ongoing
-        if (ongoing.length === 0) {
-            onBody.innerHTML = '<tr><td colspan="6" align="center" style="padding:25px; color:#718096; font-size:0.8rem;"><i class="fas fa-inbox"></i> No Active Tasks Found</td></tr>';
-        } else {
-            onBody.innerHTML = ongoing.map(t => `
-                <tr>
-                    <td>
-                        <strong><i class="far fa-calendar-alt"></i> ${formatDateDisplay(t.date)}</strong> 
-                        <button class="btn-done" onclick="markDone(${t.id})">
-                            <i class="fas fa-check"></i> MARK DONE
-                        </button>
-                    </td>
-                    <td style="color:#764ba2; font-weight:600; font-family:'Montserrat';">
-                        <i class="far fa-clock"></i> ${t.startTime}
-                    </td>
-                    <td><b style="font-family:'Montserrat';"><i class="fas fa-ticket-alt"></i> ${t.ticket}</b></td>
-                    <td><i class="fas fa-map-marker-alt"></i> ${t.area}</td>
-                    <td><span class="badge bg-${t.person.toLowerCase()}"><i class="fas fa-user"></i> ${t.person}</span></td>
-                    <td class="status-working"><i class="fas fa-spinner fa-pulse"></i> ${t.remarks}</td>
-                </tr>
-            `).join('');
-        }
+            /* Logo Size Reduction */
+            .company-logo {
+                height: 45px;
+                width: auto;
+            }
 
-        // Render Completed
-        const filtered = searchVal ? completed.filter(t => t.date === searchVal) : completed;
-        const compBody = document.querySelector('#completedTable tbody');
-        
-        if (filtered.length === 0) {
-            compBody.innerHTML = '<tr><td colspan="7" align="center" style="padding:25px; color:#718096; font-size:0.8rem;"><i class="fas fa-inbox"></i> No Completed Tasks Found</td></tr>';
-        } else {
-            compBody.innerHTML = filtered.map(t => `
-                <tr>
-                    <td><strong><i class="far fa-calendar-alt"></i> ${formatDateDisplay(t.date)}</strong></td>
-                    <td><i class="far fa-clock"></i> ${t.startTime}</td>
-                    <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">
-                        <i class="fas fa-flag-checkered"></i> ${t.doneTime}
-                    </td>
-                    <td><b style="font-family:'Montserrat';"><i class="fas fa-ticket-alt"></i> ${t.ticket}</b></td>
-                    <td><i class="fas fa-map-marker-alt"></i> ${t.area}</td>
-                    <td><span class="badge bg-${t.person.toLowerCase()}"><i class="fas fa-user"></i> ${t.person}</span></td>
-                    <td style="color:#00b09b; font-weight:700; font-family:'Montserrat';">
-                        <i class="fas fa-check-circle"></i> Done
-                    </td>
-                </tr>
-            `).join('');
-        }
-    }
+            /* Font Size Reduction for Compactness */
+            .main-title {
+                font-size: 0.85rem;
+                margin-bottom: 0;
+                line-height: 1.2;
+            }
 
-    async function addTask() {
-        const btn = document.getElementById('assignBtn');
-        const ticketInput = document.getElementById('ticketInput');
-        const ticketValue = ticketInput.value.trim();
-        
-        if(!ticketValue) {
-            showPopup('warning', 'Missing Input', 'Please enter a Ticket ID.');
-            ticketInput.focus();
-            return;
-        }
+            .company-name {
+                font-size: 0.65rem; /* Much smaller to fit next to logo */
+            }
 
-        if(!validateTicketID(ticketValue)) {
-            showPopup('warning', 'Invalid Format', 'Please enter valid ticket id. Formats: L3-22Feb26-030306, TKI011225AA67000218, CR-23Feb26-0176371, SVR-26Jan26-0082979');
-            ticketInput.focus();
-            return;
-        }
-        
-        const task = {
-            date: document.getElementById('dateInput').value,
-            ticket: ticketValue,
-            area: document.getElementById('areaInput').value,
-            person: document.getElementById('personInput').value,
-            startTime: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-            remarks: "Working", 
-            id: Date.now()
-        };
-        
-        if(!task.area || !task.person) {
-            showPopup('warning', 'Incomplete Info', 'Please select both Area and Staff.');
-            return;
-        }
-        
-        const allTickets = [...ongoing, ...completed];
-        const isDuplicate = allTickets.some(t => t.ticket === task.ticket);
-        
-        if(isDuplicate) {
-            showPopup('warning', 'Duplicate Ticket', `Ticket ID "${task.ticket}" already exists!`);
-            ticketInput.focus();
-            return;
-        }
-        
-        btn.innerHTML = '<i class="fas fa-sync fa-spin"></i> Syncing...'; 
-        btn.disabled = true;
-        
-        try {
-            await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
-            ongoing.push(task);
-            saveData(); 
-            renderAll();
-            
-            ticketInput.value = '';
-            document.getElementById('areaInput').value = '';
-            document.getElementById('personInput').value = '';
-            
-            showPopup('success', 'Task Assigned', `${task.ticket} assigned to ${task.person} for ${task.area} area`);
-            setTimeout(() => { ticketInput.focus(); }, 300);
-            
-        } catch(e) { 
-            showPopup('warning', 'Sync Error', 'Failed to sync with server! Task saved locally.');
-        } finally { 
-            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Assign Task'; 
-            btn.disabled = false; 
-        }
-    }
+            .header-right {
+                text-align: right;
+                flex-shrink: 0; /* Prevent clock from squishing */
+            }
 
-    async function markDone(id) {
-        const idx = ongoing.findIndex(t => t.id === id);
-        if (idx === -1) return;
-
-        const doneTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        const task = {...ongoing[idx], doneTime, remarks: "Done"};
-        
-        try {
-            await fetch(G_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(task) });
-            completed.unshift(ongoing.splice(idx, 1)[0]);
-            completed[0].doneTime = doneTime; 
-            completed[0].remarks = "Done";
-            saveData(); 
-            renderAll();
-            showPopup('success', 'Task Completed', `${task.ticket} completed by ${task.person} at ${doneTime}`);
-        } catch(e) { 
-            showPopup('warning', 'Sync Error', 'Error syncing with server! Task marked done locally.');
-        }
-    }
-
-    function clearCompleted() { 
-        if(confirm("Are you sure you want to clear all completed tasks? This action cannot be undone.")) { 
-            completed = []; 
-            saveData(); 
-            renderAll();
-            showPopup('info', 'Tasks Cleared', 'All completed tasks have been cleared.');
-        } 
-    }
-
-    // --- Initialization ---
-    document.addEventListener('DOMContentLoaded', () => {
-        const today = new Date();
-        document.getElementById('dateInput').value = today.toISOString().split('T')[0];
-        
-        renderAll();
-        
-        setInterval(() => { 
-            const now = new Date();
-            document.getElementById('liveClock').innerHTML = `<i class="far fa-clock"></i> ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}`;
-            document.getElementById('liveDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${now.toLocaleDateString(undefined, { 
-                weekday: 'short', 
-                month: 'short', 
-                day: 'numeric', 
-                year: 'numeric' 
-            })}`;
-        }, 1000);
-
-        syncDataFromSheet();
-        setInterval(syncDataFromSheet, 30000);
-    });
-</script>
-</body>
-</html>
+            .datetime-container {
+                align-items
